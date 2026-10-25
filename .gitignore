@@ -1,0 +1,33 @@
+# Build directories
+build/
+*.o
+*.obj
+*.exe
+*.dll
+*.lib
+*.exp
+
+# CMake
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+*.cmake
+
+# Qt
+*.moc
+moc_*.cpp
+qrc_*.cpp
+ui_*.h
+*.qm
+
+# IDE
+.vscode/
+.qtcreator/
+*.user
+*.vcxproj*
+*.sln
+
+# OS
+.DS_Store
+Thumbs.db
