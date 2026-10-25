@@ -66,6 +66,8 @@ CompilerEngine::Result CompilerEngine::evaluate(
     sourceFile.close();
 
     // Compile using MinGW g++.
+    // "-static" links the MinGW runtime into the program so it starts
+    // even when the MinGW DLLs are not on the PATH.
     QProcess compiler;
 
     compiler.setWorkingDirectory(tempDir.path());
@@ -74,6 +76,7 @@ CompilerEngine::Result CompilerEngine::evaluate(
         compilerPath,
         QStringList()
             << "-std=c++17"
+            << "-static"
             << sourcePath
             << "-o"
             << executablePath
@@ -84,9 +87,6 @@ CompilerEngine::Result CompilerEngine::evaluate(
         result.message = "Could not start MinGW compiler. Check compiler path.";
         return result;
     }
-
-    QElapsedTimer compileTimer;
-    compileTimer.start();
 
     if (!compiler.waitForFinished(compileLimitMs)) {
         compiler.kill();
