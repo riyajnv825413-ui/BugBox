@@ -161,6 +161,9 @@ CompilerEngine::Result CompilerEngine::evaluate(
     QString actual = result.output;
     QString expected = expectedOutput;
 
+    actual.replace("\r\n","\n");
+    expected.replace("\r\n","\n");
+
     actual = actual.trimmed();
     expected = expected.trimmed();
 
