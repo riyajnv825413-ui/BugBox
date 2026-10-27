@@ -1,0 +1,12 @@
+# ninja log v7
+23	3390	8148169353402814	BugGenerator3000_autogen/timestamp	1489644a0514a408
+23	3390	8148169353402814	BugGenerator3000_autogen/mocs_compilation.cpp	1489644a0514a408
+23	3390	8148169353402814	C:/Users/riyaj/Documents/BugGenerator3000/build/BugGenerator3000_autogen/timestamp	1489644a0514a408
+23	3390	8148169353402814	C:/Users/riyaj/Documents/BugGenerator3000/build/BugGenerator3000_autogen/mocs_compilation.cpp	1489644a0514a408
+4400	5849	8148169364674525	CMakeFiles/BugGenerator3000.dir/src/bug_engine/Bug.cpp.obj	2c80cb6396fd708f
+4125	19392	8148169361938396	CMakeFiles/BugGenerator3000.dir/src/UI/resultscreen.cpp.obj	58c20a73f159f410
+3717	19739	8148169357800322	CMakeFiles/BugGenerator3000.dir/src/UI/homescreen.cpp.obj	867c088084178afa
+3941	20254	8148169360100504	CMakeFiles/BugGenerator3000.dir/src/UI/leaderboarddialog.cpp.obj	df47606e985fa53d
+3877	20962	8148169359450898	CMakeFiles/BugGenerator3000.dir/src/UI/leaderboard.cpp.obj	c260c18974a80cf
+3654	21938	8148169357219401	CMakeFiles/BugGenerator3000.dir/src/UI/debugscreen.cpp.obj	48e8a81c9344f7e5
+3400	21732	8148169354637256	CMakeFiles/BugGenerator3000.dir/BugGenerator3000_autogen/mocs_compilation.cpp.obj	6e4c4ce3fd3a5a0c

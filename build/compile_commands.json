@@ -1,0 +1,122 @@
+[
+{
+  "directory": "C:/Users/riyaj/Documents/BugGenerator3000/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 -IC:/Users/riyaj/Documents/BugGenerator3000/build/BugGenerator3000_autogen/include -IC:/Users/riyaj/Documents/BugGenerator3000/src -IC:/Users/riyaj/Documents/BugGenerator3000/src/bug_engine -IC:/Users/riyaj/Documents/BugGenerator3000/src/compilation -IC:/Users/riyaj/Documents/BugGenerator3000/src/UI -isystem C:/msys64/ucrt64/include/qt6/QtWidgets -isystem C:/msys64/ucrt64/include/qt6 -isystem C:/msys64/ucrt64/include/qt6/QtCore -isystem C:/msys64/ucrt64/share/qt6/mkspecs/win32-g++ -isystem C:/msys64/ucrt64/include/qt6/QtGui -g -std=gnu++17 -o CMakeFiles\\BugGenerator3000.dir\\BugGenerator3000_autogen\\mocs_compilation.cpp.obj -c C:\\Users\\riyaj\\Documents\\BugGenerator3000\\build\\BugGenerator3000_autogen\\mocs_compilation.cpp",
+  "file": "C:/Users/riyaj/Documents/BugGenerator3000/build/BugGenerator3000_autogen/mocs_compilation.cpp",
+  "output": "C:/Users/riyaj/Documents/BugGenerator3000/build/CMakeFiles/BugGenerator3000.dir/BugGenerator3000_autogen/mocs_compilation.cpp.obj"
+},
+{
+  "directory": "C:/Users/riyaj/Documents/BugGenerator3000/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 -IC:/Users/riyaj/Documents/BugGenerator3000/build/BugGenerator3000_autogen/include -IC:/Users/riyaj/Documents/BugGenerator3000/src -IC:/Users/riyaj/Documents/BugGenerator3000/src/bug_engine -IC:/Users/riyaj/Documents/BugGenerator3000/src/compilation -IC:/Users/riyaj/Documents/BugGenerator3000/src/UI -isystem C:/msys64/ucrt64/include/qt6/QtWidgets -isystem C:/msys64/ucrt64/include/qt6 -isystem C:/msys64/ucrt64/include/qt6/QtCore -isystem C:/msys64/ucrt64/share/qt6/mkspecs/win32-g++ -isystem C:/msys64/ucrt64/include/qt6/QtGui -g -std=gnu++17 -o CMakeFiles\\BugGenerator3000.dir\\src\\UI\\debugscreen.cpp.obj -c C:\\Users\\riyaj\\Documents\\BugGenerator3000\\src\\UI\\debugscreen.cpp",
+  "file": "C:/Users/riyaj/Documents/BugGenerator3000/src/UI/debugscreen.cpp",
+  "output": "C:/Users/riyaj/Documents/BugGenerator3000/build/CMakeFiles/BugGenerator3000.dir/src/UI/debugscreen.cpp.obj"
+},
+{
+  "directory": "C:/Users/riyaj/Documents/BugGenerator3000/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 -IC:/Users/riyaj/Documents/BugGenerator3000/build/BugGenerator3000_autogen/include -IC:/Users/riyaj/Documents/BugGenerator3000/src -IC:/Users/riyaj/Documents/BugGenerator3000/src/bug_engine -IC:/Users/riyaj/Documents/BugGenerator3000/src/compilation -IC:/Users/riyaj/Documents/BugGenerator3000/src/UI -isystem C:/msys64/ucrt64/include/qt6/QtWidgets -isystem C:/msys64/ucrt64/include/qt6 -isystem C:/msys64/ucrt64/include/qt6/QtCore -isystem C:/msys64/ucrt64/share/qt6/mkspecs/win32-g++ -isystem C:/msys64/ucrt64/include/qt6/QtGui -g -std=gnu++17 -o CMakeFiles\\BugGenerator3000.dir\\src\\UI\\homescreen.cpp.obj -c C:\\Users\\riyaj\\Documents\\BugGenerator3000\\src\\UI\\homescreen.cpp",
+  "file": "C:/Users/riyaj/Documents/BugGenerator3000/src/UI/homescreen.cpp",
+  "output": "C:/Users/riyaj/Documents/BugGenerator3000/build/CMakeFiles/BugGenerator3000.dir/src/UI/homescreen.cpp.obj"
+},
+{
+  "directory": "C:/Users/riyaj/Documents/BugGenerator3000/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 -IC:/Users/riyaj/Documents/BugGenerator3000/build/BugGenerator3000_autogen/include -IC:/Users/riyaj/Documents/BugGenerator3000/src -IC:/Users/riyaj/Documents/BugGenerator3000/src/bug_engine -IC:/Users/riyaj/Documents/BugGenerator3000/src/compilation -IC:/Users/riyaj/Documents/BugGenerator3000/src/UI -isystem C:/msys64/ucrt64/include/qt6/QtWidgets -isystem C:/msys64/ucrt64/include/qt6 -isystem C:/msys64/ucrt64/include/qt6/QtCore -isystem C:/msys64/ucrt64/share/qt6/mkspecs/win32-g++ -isystem C:/msys64/ucrt64/include/qt6/QtGui -g -std=gnu++17 -o CMakeFiles\\BugGenerator3000.dir\\src\\UI\\leaderboard.cpp.obj -c C:\\Users\\riyaj\\Documents\\BugGenerator3000\\src\\UI\\leaderboard.cpp",
+  "file": "C:/Users/riyaj/Documents/BugGenerator3000/src/UI/leaderboard.cpp",
+  "output": "C:/Users/riyaj/Documents/BugGenerator3000/build/CMakeFiles/BugGenerator3000.dir/src/UI/leaderboard.cpp.obj"
+},
+{
+  "directory": "C:/Users/riyaj/Documents/BugGenerator3000/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 -IC:/Users/riyaj/Documents/BugGenerator3000/build/BugGenerator3000_autogen/include -IC:/Users/riyaj/Documents/BugGenerator3000/src -IC:/Users/riyaj/Documents/BugGenerator3000/src/bug_engine -IC:/Users/riyaj/Documents/BugGenerator3000/src/compilation -IC:/Users/riyaj/Documents/BugGenerator3000/src/UI -isystem C:/msys64/ucrt64/include/qt6/QtWidgets -isystem C:/msys64/ucrt64/include/qt6 -isystem C:/msys64/ucrt64/include/qt6/QtCore -isystem C:/msys64/ucrt64/share/qt6/mkspecs/win32-g++ -isystem C:/msys64/ucrt64/include/qt6/QtGui -g -std=gnu++17 -o CMakeFiles\\BugGenerator3000.dir\\src\\UI\\leaderboarddialog.cpp.obj -c C:\\Users\\riyaj\\Documents\\BugGenerator3000\\src\\UI\\leaderboarddialog.cpp",
+  "file": "C:/Users/riyaj/Documents/BugGenerator3000/src/UI/leaderboarddialog.cpp",
+  "output": "C:/Users/riyaj/Documents/BugGenerator3000/build/CMakeFiles/BugGenerator3000.dir/src/UI/leaderboarddialog.cpp.obj"
+},
+{
+  "directory": "C:/Users/riyaj/Documents/BugGenerator3000/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 -IC:/Users/riyaj/Documents/BugGenerator3000/build/BugGenerator3000_autogen/include -IC:/Users/riyaj/Documents/BugGenerator3000/src -IC:/Users/riyaj/Documents/BugGenerator3000/src/bug_engine -IC:/Users/riyaj/Documents/BugGenerator3000/src/compilation -IC:/Users/riyaj/Documents/BugGenerator3000/src/UI -isystem C:/msys64/ucrt64/include/qt6/QtWidgets -isystem C:/msys64/ucrt64/include/qt6 -isystem C:/msys64/ucrt64/include/qt6/QtCore -isystem C:/msys64/ucrt64/share/qt6/mkspecs/win32-g++ -isystem C:/msys64/ucrt64/include/qt6/QtGui -g -std=gnu++17 -o CMakeFiles\\BugGenerator3000.dir\\src\\UI\\mainwindow.cpp.obj -c C:\\Users\\riyaj\\Documents\\BugGenerator3000\\src\\UI\\mainwindow.cpp",
+  "file": "C:/Users/riyaj/Documents/BugGenerator3000/src/UI/mainwindow.cpp",
+  "output": "C:/Users/riyaj/Documents/BugGenerator3000/build/CMakeFiles/BugGenerator3000.dir/src/UI/mainwindow.cpp.obj"
+},
+{
+  "directory": "C:/Users/riyaj/Documents/BugGenerator3000/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 -IC:/Users/riyaj/Documents/BugGenerator3000/build/BugGenerator3000_autogen/include -IC:/Users/riyaj/Documents/BugGenerator3000/src -IC:/Users/riyaj/Documents/BugGenerator3000/src/bug_engine -IC:/Users/riyaj/Documents/BugGenerator3000/src/compilation -IC:/Users/riyaj/Documents/BugGenerator3000/src/UI -isystem C:/msys64/ucrt64/include/qt6/QtWidgets -isystem C:/msys64/ucrt64/include/qt6 -isystem C:/msys64/ucrt64/include/qt6/QtCore -isystem C:/msys64/ucrt64/share/qt6/mkspecs/win32-g++ -isystem C:/msys64/ucrt64/include/qt6/QtGui -g -std=gnu++17 -o CMakeFiles\\BugGenerator3000.dir\\src\\UI\\resultscreen.cpp.obj -c C:\\Users\\riyaj\\Documents\\BugGenerator3000\\src\\UI\\resultscreen.cpp",
+  "file": "C:/Users/riyaj/Documents/BugGenerator3000/src/UI/resultscreen.cpp",
+  "output": "C:/Users/riyaj/Documents/BugGenerator3000/build/CMakeFiles/BugGenerator3000.dir/src/UI/resultscreen.cpp.obj"
+},
+{
+  "directory": "C:/Users/riyaj/Documents/BugGenerator3000/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 -IC:/Users/riyaj/Documents/BugGenerator3000/build/BugGenerator3000_autogen/include -IC:/Users/riyaj/Documents/BugGenerator3000/src -IC:/Users/riyaj/Documents/BugGenerator3000/src/bug_engine -IC:/Users/riyaj/Documents/BugGenerator3000/src/compilation -IC:/Users/riyaj/Documents/BugGenerator3000/src/UI -isystem C:/msys64/ucrt64/include/qt6/QtWidgets -isystem C:/msys64/ucrt64/include/qt6 -isystem C:/msys64/ucrt64/include/qt6/QtCore -isystem C:/msys64/ucrt64/share/qt6/mkspecs/win32-g++ -isystem C:/msys64/ucrt64/include/qt6/QtGui -g -std=gnu++17 -o CMakeFiles\\BugGenerator3000.dir\\src\\bug_engine\\ArrayBug.cpp.obj -c C:\\Users\\riyaj\\Documents\\BugGenerator3000\\src\\bug_engine\\ArrayBug.cpp",
+  "file": "C:/Users/riyaj/Documents/BugGenerator3000/src/bug_engine/ArrayBug.cpp",
+  "output": "C:/Users/riyaj/Documents/BugGenerator3000/build/CMakeFiles/BugGenerator3000.dir/src/bug_engine/ArrayBug.cpp.obj"
+},
+{
+  "directory": "C:/Users/riyaj/Documents/BugGenerator3000/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 -IC:/Users/riyaj/Documents/BugGenerator3000/build/BugGenerator3000_autogen/include -IC:/Users/riyaj/Documents/BugGenerator3000/src -IC:/Users/riyaj/Documents/BugGenerator3000/src/bug_engine -IC:/Users/riyaj/Documents/BugGenerator3000/src/compilation -IC:/Users/riyaj/Documents/BugGenerator3000/src/UI -isystem C:/msys64/ucrt64/include/qt6/QtWidgets -isystem C:/msys64/ucrt64/include/qt6 -isystem C:/msys64/ucrt64/include/qt6/QtCore -isystem C:/msys64/ucrt64/share/qt6/mkspecs/win32-g++ -isystem C:/msys64/ucrt64/include/qt6/QtGui -g -std=gnu++17 -o CMakeFiles\\BugGenerator3000.dir\\src\\bug_engine\\Bug.cpp.obj -c C:\\Users\\riyaj\\Documents\\BugGenerator3000\\src\\bug_engine\\Bug.cpp",
+  "file": "C:/Users/riyaj/Documents/BugGenerator3000/src/bug_engine/Bug.cpp",
+  "output": "C:/Users/riyaj/Documents/BugGenerator3000/build/CMakeFiles/BugGenerator3000.dir/src/bug_engine/Bug.cpp.obj"
+},
+{
+  "directory": "C:/Users/riyaj/Documents/BugGenerator3000/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 -IC:/Users/riyaj/Documents/BugGenerator3000/build/BugGenerator3000_autogen/include -IC:/Users/riyaj/Documents/BugGenerator3000/src -IC:/Users/riyaj/Documents/BugGenerator3000/src/bug_engine -IC:/Users/riyaj/Documents/BugGenerator3000/src/compilation -IC:/Users/riyaj/Documents/BugGenerator3000/src/UI -isystem C:/msys64/ucrt64/include/qt6/QtWidgets -isystem C:/msys64/ucrt64/include/qt6 -isystem C:/msys64/ucrt64/include/qt6/QtCore -isystem C:/msys64/ucrt64/share/qt6/mkspecs/win32-g++ -isystem C:/msys64/ucrt64/include/qt6/QtGui -g -std=gnu++17 -o CMakeFiles\\BugGenerator3000.dir\\src\\bug_engine\\BugGenerator.cpp.obj -c C:\\Users\\riyaj\\Documents\\BugGenerator3000\\src\\bug_engine\\BugGenerator.cpp",
+  "file": "C:/Users/riyaj/Documents/BugGenerator3000/src/bug_engine/BugGenerator.cpp",
+  "output": "C:/Users/riyaj/Documents/BugGenerator3000/build/CMakeFiles/BugGenerator3000.dir/src/bug_engine/BugGenerator.cpp.obj"
+},
+{
+  "directory": "C:/Users/riyaj/Documents/BugGenerator3000/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 -IC:/Users/riyaj/Documents/BugGenerator3000/build/BugGenerator3000_autogen/include -IC:/Users/riyaj/Documents/BugGenerator3000/src -IC:/Users/riyaj/Documents/BugGenerator3000/src/bug_engine -IC:/Users/riyaj/Documents/BugGenerator3000/src/compilation -IC:/Users/riyaj/Documents/BugGenerator3000/src/UI -isystem C:/msys64/ucrt64/include/qt6/QtWidgets -isystem C:/msys64/ucrt64/include/qt6 -isystem C:/msys64/ucrt64/include/qt6/QtCore -isystem C:/msys64/ucrt64/share/qt6/mkspecs/win32-g++ -isystem C:/msys64/ucrt64/include/qt6/QtGui -g -std=gnu++17 -o CMakeFiles\\BugGenerator3000.dir\\src\\bug_engine\\ConditionBug.cpp.obj -c C:\\Users\\riyaj\\Documents\\BugGenerator3000\\src\\bug_engine\\ConditionBug.cpp",
+  "file": "C:/Users/riyaj/Documents/BugGenerator3000/src/bug_engine/ConditionBug.cpp",
+  "output": "C:/Users/riyaj/Documents/BugGenerator3000/build/CMakeFiles/BugGenerator3000.dir/src/bug_engine/ConditionBug.cpp.obj"
+},
+{
+  "directory": "C:/Users/riyaj/Documents/BugGenerator3000/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 -IC:/Users/riyaj/Documents/BugGenerator3000/build/BugGenerator3000_autogen/include -IC:/Users/riyaj/Documents/BugGenerator3000/src -IC:/Users/riyaj/Documents/BugGenerator3000/src/bug_engine -IC:/Users/riyaj/Documents/BugGenerator3000/src/compilation -IC:/Users/riyaj/Documents/BugGenerator3000/src/UI -isystem C:/msys64/ucrt64/include/qt6/QtWidgets -isystem C:/msys64/ucrt64/include/qt6 -isystem C:/msys64/ucrt64/include/qt6/QtCore -isystem C:/msys64/ucrt64/share/qt6/mkspecs/win32-g++ -isystem C:/msys64/ucrt64/include/qt6/QtGui -g -std=gnu++17 -o CMakeFiles\\BugGenerator3000.dir\\src\\bug_engine\\LogicBug.cpp.obj -c C:\\Users\\riyaj\\Documents\\BugGenerator3000\\src\\bug_engine\\LogicBug.cpp",
+  "file": "C:/Users/riyaj/Documents/BugGenerator3000/src/bug_engine/LogicBug.cpp",
+  "output": "C:/Users/riyaj/Documents/BugGenerator3000/build/CMakeFiles/BugGenerator3000.dir/src/bug_engine/LogicBug.cpp.obj"
+},
+{
+  "directory": "C:/Users/riyaj/Documents/BugGenerator3000/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 -IC:/Users/riyaj/Documents/BugGenerator3000/build/BugGenerator3000_autogen/include -IC:/Users/riyaj/Documents/BugGenerator3000/src -IC:/Users/riyaj/Documents/BugGenerator3000/src/bug_engine -IC:/Users/riyaj/Documents/BugGenerator3000/src/compilation -IC:/Users/riyaj/Documents/BugGenerator3000/src/UI -isystem C:/msys64/ucrt64/include/qt6/QtWidgets -isystem C:/msys64/ucrt64/include/qt6 -isystem C:/msys64/ucrt64/include/qt6/QtCore -isystem C:/msys64/ucrt64/share/qt6/mkspecs/win32-g++ -isystem C:/msys64/ucrt64/include/qt6/QtGui -g -std=gnu++17 -o CMakeFiles\\BugGenerator3000.dir\\src\\bug_engine\\LoopBug.cpp.obj -c C:\\Users\\riyaj\\Documents\\BugGenerator3000\\src\\bug_engine\\LoopBug.cpp",
+  "file": "C:/Users/riyaj/Documents/BugGenerator3000/src/bug_engine/LoopBug.cpp",
+  "output": "C:/Users/riyaj/Documents/BugGenerator3000/build/CMakeFiles/BugGenerator3000.dir/src/bug_engine/LoopBug.cpp.obj"
+},
+{
+  "directory": "C:/Users/riyaj/Documents/BugGenerator3000/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 -IC:/Users/riyaj/Documents/BugGenerator3000/build/BugGenerator3000_autogen/include -IC:/Users/riyaj/Documents/BugGenerator3000/src -IC:/Users/riyaj/Documents/BugGenerator3000/src/bug_engine -IC:/Users/riyaj/Documents/BugGenerator3000/src/compilation -IC:/Users/riyaj/Documents/BugGenerator3000/src/UI -isystem C:/msys64/ucrt64/include/qt6/QtWidgets -isystem C:/msys64/ucrt64/include/qt6 -isystem C:/msys64/ucrt64/include/qt6/QtCore -isystem C:/msys64/ucrt64/share/qt6/mkspecs/win32-g++ -isystem C:/msys64/ucrt64/include/qt6/QtGui -g -std=gnu++17 -o CMakeFiles\\BugGenerator3000.dir\\src\\bug_engine\\NestedLoopBug.cpp.obj -c C:\\Users\\riyaj\\Documents\\BugGenerator3000\\src\\bug_engine\\NestedLoopBug.cpp",
+  "file": "C:/Users/riyaj/Documents/BugGenerator3000/src/bug_engine/NestedLoopBug.cpp",
+  "output": "C:/Users/riyaj/Documents/BugGenerator3000/build/CMakeFiles/BugGenerator3000.dir/src/bug_engine/NestedLoopBug.cpp.obj"
+},
+{
+  "directory": "C:/Users/riyaj/Documents/BugGenerator3000/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 -IC:/Users/riyaj/Documents/BugGenerator3000/build/BugGenerator3000_autogen/include -IC:/Users/riyaj/Documents/BugGenerator3000/src -IC:/Users/riyaj/Documents/BugGenerator3000/src/bug_engine -IC:/Users/riyaj/Documents/BugGenerator3000/src/compilation -IC:/Users/riyaj/Documents/BugGenerator3000/src/UI -isystem C:/msys64/ucrt64/include/qt6/QtWidgets -isystem C:/msys64/ucrt64/include/qt6 -isystem C:/msys64/ucrt64/include/qt6/QtCore -isystem C:/msys64/ucrt64/share/qt6/mkspecs/win32-g++ -isystem C:/msys64/ucrt64/include/qt6/QtGui -g -std=gnu++17 -o CMakeFiles\\BugGenerator3000.dir\\src\\bug_engine\\RecursionBug.cpp.obj -c C:\\Users\\riyaj\\Documents\\BugGenerator3000\\src\\bug_engine\\RecursionBug.cpp",
+  "file": "C:/Users/riyaj/Documents/BugGenerator3000/src/bug_engine/RecursionBug.cpp",
+  "output": "C:/Users/riyaj/Documents/BugGenerator3000/build/CMakeFiles/BugGenerator3000.dir/src/bug_engine/RecursionBug.cpp.obj"
+},
+{
+  "directory": "C:/Users/riyaj/Documents/BugGenerator3000/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 -IC:/Users/riyaj/Documents/BugGenerator3000/build/BugGenerator3000_autogen/include -IC:/Users/riyaj/Documents/BugGenerator3000/src -IC:/Users/riyaj/Documents/BugGenerator3000/src/bug_engine -IC:/Users/riyaj/Documents/BugGenerator3000/src/compilation -IC:/Users/riyaj/Documents/BugGenerator3000/src/UI -isystem C:/msys64/ucrt64/include/qt6/QtWidgets -isystem C:/msys64/ucrt64/include/qt6 -isystem C:/msys64/ucrt64/include/qt6/QtCore -isystem C:/msys64/ucrt64/share/qt6/mkspecs/win32-g++ -isystem C:/msys64/ucrt64/include/qt6/QtGui -g -std=gnu++17 -o CMakeFiles\\BugGenerator3000.dir\\src\\bug_engine\\SyntaxBug.cpp.obj -c C:\\Users\\riyaj\\Documents\\BugGenerator3000\\src\\bug_engine\\SyntaxBug.cpp",
+  "file": "C:/Users/riyaj/Documents/BugGenerator3000/src/bug_engine/SyntaxBug.cpp",
+  "output": "C:/Users/riyaj/Documents/BugGenerator3000/build/CMakeFiles/BugGenerator3000.dir/src/bug_engine/SyntaxBug.cpp.obj"
+},
+{
+  "directory": "C:/Users/riyaj/Documents/BugGenerator3000/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 -IC:/Users/riyaj/Documents/BugGenerator3000/build/BugGenerator3000_autogen/include -IC:/Users/riyaj/Documents/BugGenerator3000/src -IC:/Users/riyaj/Documents/BugGenerator3000/src/bug_engine -IC:/Users/riyaj/Documents/BugGenerator3000/src/compilation -IC:/Users/riyaj/Documents/BugGenerator3000/src/UI -isystem C:/msys64/ucrt64/include/qt6/QtWidgets -isystem C:/msys64/ucrt64/include/qt6 -isystem C:/msys64/ucrt64/include/qt6/QtCore -isystem C:/msys64/ucrt64/share/qt6/mkspecs/win32-g++ -isystem C:/msys64/ucrt64/include/qt6/QtGui -g -std=gnu++17 -o CMakeFiles\\BugGenerator3000.dir\\src\\bug_engine\\bugchallenge.cpp.obj -c C:\\Users\\riyaj\\Documents\\BugGenerator3000\\src\\bug_engine\\bugchallenge.cpp",
+  "file": "C:/Users/riyaj/Documents/BugGenerator3000/src/bug_engine/bugchallenge.cpp",
+  "output": "C:/Users/riyaj/Documents/BugGenerator3000/build/CMakeFiles/BugGenerator3000.dir/src/bug_engine/bugchallenge.cpp.obj"
+},
+{
+  "directory": "C:/Users/riyaj/Documents/BugGenerator3000/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 -IC:/Users/riyaj/Documents/BugGenerator3000/build/BugGenerator3000_autogen/include -IC:/Users/riyaj/Documents/BugGenerator3000/src -IC:/Users/riyaj/Documents/BugGenerator3000/src/bug_engine -IC:/Users/riyaj/Documents/BugGenerator3000/src/compilation -IC:/Users/riyaj/Documents/BugGenerator3000/src/UI -isystem C:/msys64/ucrt64/include/qt6/QtWidgets -isystem C:/msys64/ucrt64/include/qt6 -isystem C:/msys64/ucrt64/include/qt6/QtCore -isystem C:/msys64/ucrt64/share/qt6/mkspecs/win32-g++ -isystem C:/msys64/ucrt64/include/qt6/QtGui -g -std=gnu++17 -o CMakeFiles\\BugGenerator3000.dir\\src\\bug_engine\\bugchallengeadapter.cpp.obj -c C:\\Users\\riyaj\\Documents\\BugGenerator3000\\src\\bug_engine\\bugchallengeadapter.cpp",
+  "file": "C:/Users/riyaj/Documents/BugGenerator3000/src/bug_engine/bugchallengeadapter.cpp",
+  "output": "C:/Users/riyaj/Documents/BugGenerator3000/build/CMakeFiles/BugGenerator3000.dir/src/bug_engine/bugchallengeadapter.cpp.obj"
+},
+{
+  "directory": "C:/Users/riyaj/Documents/BugGenerator3000/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 -IC:/Users/riyaj/Documents/BugGenerator3000/build/BugGenerator3000_autogen/include -IC:/Users/riyaj/Documents/BugGenerator3000/src -IC:/Users/riyaj/Documents/BugGenerator3000/src/bug_engine -IC:/Users/riyaj/Documents/BugGenerator3000/src/compilation -IC:/Users/riyaj/Documents/BugGenerator3000/src/UI -isystem C:/msys64/ucrt64/include/qt6/QtWidgets -isystem C:/msys64/ucrt64/include/qt6 -isystem C:/msys64/ucrt64/include/qt6/QtCore -isystem C:/msys64/ucrt64/share/qt6/mkspecs/win32-g++ -isystem C:/msys64/ucrt64/include/qt6/QtGui -g -std=gnu++17 -o CMakeFiles\\BugGenerator3000.dir\\src\\bug_engine\\scoremanager.cpp.obj -c C:\\Users\\riyaj\\Documents\\BugGenerator3000\\src\\bug_engine\\scoremanager.cpp",
+  "file": "C:/Users/riyaj/Documents/BugGenerator3000/src/bug_engine/scoremanager.cpp",
+  "output": "C:/Users/riyaj/Documents/BugGenerator3000/build/CMakeFiles/BugGenerator3000.dir/src/bug_engine/scoremanager.cpp.obj"
+},
+{
+  "directory": "C:/Users/riyaj/Documents/BugGenerator3000/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 -IC:/Users/riyaj/Documents/BugGenerator3000/build/BugGenerator3000_autogen/include -IC:/Users/riyaj/Documents/BugGenerator3000/src -IC:/Users/riyaj/Documents/BugGenerator3000/src/bug_engine -IC:/Users/riyaj/Documents/BugGenerator3000/src/compilation -IC:/Users/riyaj/Documents/BugGenerator3000/src/UI -isystem C:/msys64/ucrt64/include/qt6/QtWidgets -isystem C:/msys64/ucrt64/include/qt6 -isystem C:/msys64/ucrt64/include/qt6/QtCore -isystem C:/msys64/ucrt64/share/qt6/mkspecs/win32-g++ -isystem C:/msys64/ucrt64/include/qt6/QtGui -g -std=gnu++17 -o CMakeFiles\\BugGenerator3000.dir\\src\\compilation\\CompilerEngine.cpp.obj -c C:\\Users\\riyaj\\Documents\\BugGenerator3000\\src\\compilation\\CompilerEngine.cpp",
+  "file": "C:/Users/riyaj/Documents/BugGenerator3000/src/compilation/CompilerEngine.cpp",
+  "output": "C:/Users/riyaj/Documents/BugGenerator3000/build/CMakeFiles/BugGenerator3000.dir/src/compilation/CompilerEngine.cpp.obj"
+}
+]
