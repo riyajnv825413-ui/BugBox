@@ -10,6 +10,8 @@
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QFrame>
+#include "leaderboarddialog.h"
+
 
 // -----------------------------------------------------------------------
 // Constructor
@@ -28,9 +30,9 @@ HomeScreen::HomeScreen(QWidget *parent)
 Difficulty HomeScreen::selectedDifficulty() const
 {
     switch (m_difficultyCombo->currentIndex()) {
-    case 1:  return Difficulty::Medium;
-    case 2:  return Difficulty::Hard;
-    default: return Difficulty::Easy;
+    case 1:  return Difficulty::MEDIUM;
+    case 2:  return Difficulty::HARD;
+    default: return Difficulty::EASY;
     }
 }
 
@@ -46,7 +48,33 @@ GameMode HomeScreen::selectedGameMode() const
 // -----------------------------------------------------------------------
 void HomeScreen::onStartClicked()
 {
-    emit startRequested(selectedDifficulty(), selectedGameMode());
+    QString playerName = m_nameLineEdit->text().trimmed();
+    
+    if (playerName.isEmpty()) {
+        // Fallback default name if left blank so it doesn't break
+        playerName = "Player_1"; 
+    }
+
+    // Capture selections
+    QString difficulty = m_difficultyCombo->currentText();
+    QString gameMode = m_gameModeCombo->currentText();
+emit startRequested(m_nameLineEdit->text().trimmed().isEmpty() ? "Player_1" : m_nameLineEdit->text().trimmed(), 
+                    selectedDifficulty(), 
+                    selectedGameMode());
+}
+void HomeScreen::onLeaderboardButtonClicked()
+{
+    // Fix: Create the window on the Heap using a pointer so it survives the function scope
+    LeaderboardDialog *dialog = new LeaderboardDialog(this);
+    
+    // Set explicit visual properties to prevent 0x0 footprint sizes
+    dialog->setModal(true);
+    dialog->setAttribute(Qt::WA_DeleteOnClose); // Tells Qt to automatically free memory when closed
+    
+    // Open the window
+    dialog->show(); 
+    dialog->raise();
+    dialog->activateWindow();
 }
 
 // -----------------------------------------------------------------------
@@ -139,6 +167,20 @@ void HomeScreen::buildLayout()
 
     mainLayout->addSpacing(10);
 
+    // Inside buildLayout() right before the difficulty label/combo code:
+m_nameLabel = new QLabel("Enter Player Name:", this);
+m_nameLabel->setObjectName("nameLabel");
+
+m_nameLineEdit = new QLineEdit(this);
+m_nameLineEdit->setObjectName("nameLineEdit");
+m_nameLineEdit->setPlaceholderText("Enter your username...");
+m_nameLineEdit->setMaxLength(20);
+
+// Add them to your main layout structure
+mainLayout->addWidget(m_nameLabel);
+mainLayout->addWidget(m_nameLineEdit);
+
+
     // ---- Start button --------------------------------------------------
     m_startButton = new QPushButton("▶  Start Debugging", this);
     m_startButton->setObjectName("startButton");
@@ -159,6 +201,7 @@ void HomeScreen::buildLayout()
     footerLabel->setObjectName("footerLabel");
     footerLabel->setAlignment(Qt::AlignCenter);
     mainLayout->addWidget(footerLabel);
+   
 }
 
 // -----------------------------------------------------------------------
@@ -167,30 +210,30 @@ void HomeScreen::buildLayout()
 // -----------------------------------------------------------------------
 void HomeScreen::applyStyles()
 {
+    // Important: Targeted 'HomeScreen, QWidget' ensures custom layout backgrounds trigger correctly
     setStyleSheet(R"(
         /* ---- Background ---- */
-        HomeScreen {
-            background: qlineargradient(
-                x1:0, y1:0, x2:0, y2:1,
-                stop:0 #0f0c29, stop:0.5 #1a1a4e, stop:1 #0f0c29
-            );
+        HomeScreen, QWidget {
+            background-color: #000000;
         }
 
         /* ---- Title ---- */
         QLabel#titleLabel {
             font-size: 56px;
             font-weight: 900;
-            color: #ffffff;
+            color: #ffffff; /* Flipped to white so it pops on black background */
             letter-spacing: 6px;
             font-family: 'Segoe UI', 'Arial', sans-serif;
+            background: transparent;
         }
 
         /* ---- Subtitle ---- */
         QLabel#subtitleLabel {
             font-size: 18px;
-            color: #a0c4ff;
+            color: #a0c4ff; /* Flipped to neon blue for visibility */
             font-style: italic;
             font-family: 'Segoe UI', sans-serif;
+            background: transparent;
         }
 
         /* ---- Separator ---- */
@@ -202,7 +245,7 @@ void HomeScreen::applyStyles()
         /* ---- Instruction box ---- */
         QLabel#instructLabel {
             font-size: 14px;
-            color: #d0d8ff;
+            color: #e0e0ff; /* Changed to light tint */
             background: rgba(255,255,255,0.05);
             border: 1px solid rgba(160,196,255,0.2);
             border-radius: 12px;
@@ -212,31 +255,34 @@ void HomeScreen::applyStyles()
         }
 
         /* ---- Difficulty label ---- */
-        QLabel#diffLabel {
+        QLabel#diffLabel, QLabel {
             font-size: 15px;
-            color: #a0c4ff;
+            color: #ffffff; /* Flipped to white */
             font-family: 'Segoe UI', sans-serif;
+            background: transparent;
         }
 
         /* ---- Combo box ---- */
-        QComboBox#difficultyCombo, QComboBox#gameModeCombo {
-            background: rgba(255,255,255,0.08);
-            color: #ffffff;
+        QComboBox#difficultyCombo, QComboBox#gameModeCombo, QComboBox {
+            background: rgba(255,255,255,0.12); /* Slightly opaque box over black */
+            color: #ffffff; /* Text color inside boxes turned to white */
             border: 1px solid #5050b0;
             border-radius: 8px;
             padding: 8px 14px;
             font-size: 14px;
             font-family: 'Segoe UI', sans-serif;
         }
-        QComboBox#difficultyCombo::drop-down,
-        QComboBox#gameModeCombo::drop-down {
+        
+        QComboBox::drop-down {
             border: none;
         }
-        QComboBox#difficultyCombo QAbstractItemView,
-        QComboBox#gameModeCombo QAbstractItemView {
-            background: #1a1a4e;
+        
+        /* Popup dropdown panel list configuration */
+        QComboBox QAbstractItemView {
+            background-color: #1a1a4e;
             color: #ffffff;
             selection-background-color: #3a3a9a;
+            selection-color: #ffffff;
         }
 
         /* ---- Start button ---- */
@@ -269,8 +315,30 @@ void HomeScreen::applyStyles()
         /* ---- Footer ---- */
         QLabel#footerLabel {
             font-size: 11px;
-            color: #555580;
+            color: #7575a3;
             font-family: 'Segoe UI', sans-serif;
+            background: transparent;
         }
+            /* Add this inside the raw stylesheet string string block */
+QLabel#nameLabel {
+    font-size: 15px;
+    color: #ffffff;
+    font-family: 'Segoe UI', sans-serif;
+    margin-top: 10px;
+}
+
+QLineEdit#nameLineEdit {
+    background: rgba(255,255,255,0.08);
+    color: #ffffff;
+    border: 1px solid #5050b0;
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 14px;
+    font-family: 'Segoe UI', sans-serif;
+}
+QLineEdit#nameLineEdit:focus {
+    border: 1px solid #7b2ff7;
+}
+
     )");
 }

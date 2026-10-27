@@ -1,33 +1,19 @@
 #include "leaderboard.h"
-
-#include <QDir>
 #include <QFile>
-#include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <QJsonArray>
 #include <QStandardPaths>
-
+#include <QDir>
 #include <algorithm>
-
-static void sortEntries(QVector<LeaderboardEntry> &entries)
-{
-    std::sort(entries.begin(), entries.end(),
-              [](const LeaderboardEntry &a, const LeaderboardEntry &b) {
-                  if (a.score != b.score)
-                      return a.score > b.score;   // higher score first
-                  return a.timeMs < b.timeMs;     // then faster time
-              });
-}
 
 Leaderboard::Leaderboard(QObject *parent)
     : QObject(parent)
 {
-    // Default: <AppData>/BUGBOX/leaderboard.json (created if missing)
-    QString dir = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation);
-    if (dir.isEmpty())
-        dir = QStringLiteral(".");
-    QDir().mkpath(dir);
-    m_filePath = dir + QStringLiteral("/leaderboard.json");
+    // Default path: AppData or local Documents directory to avoid write permission issues
+    QString dataDir = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation);
+    QDir().mkpath(dataDir); // Ensure directory exists
+    m_filePath = dataDir + "/leaderboard.json";
 }
 
 void Leaderboard::setFilePath(const QString &path)
@@ -40,74 +26,99 @@ QString Leaderboard::filePath() const
     return m_filePath;
 }
 
-QVector<LeaderboardEntry> Leaderboard::loadAll() const
-{
-    QVector<LeaderboardEntry> entries;
-
-    QFile file(m_filePath);
-    if (!file.open(QIODevice::ReadOnly))
-        return entries;                 // no file yet = empty leaderboard
-
-    const QJsonDocument doc = QJsonDocument::fromJson(file.readAll());
-    if (!doc.isArray())
-        return entries;
-
-    const QJsonArray array = doc.array();
-    for (const QJsonValue &value : array) {
-        const QJsonObject o = value.toObject();
-        LeaderboardEntry e;
-        e.name = o.value(QStringLiteral("name")).toString();
-        e.score = o.value(QStringLiteral("score")).toInt();
-        e.timeMs = static_cast<qint64>(o.value(QStringLiteral("timeMs")).toDouble());
-        entries.push_back(e);
-    }
-    return entries;
-}
-
-bool Leaderboard::saveAll(const QVector<LeaderboardEntry> &entries) const
-{
-    QJsonArray array;
-    for (const LeaderboardEntry &e : entries) {
-        QJsonObject o;
-        o.insert(QStringLiteral("name"), e.name);
-        o.insert(QStringLiteral("score"), e.score);
-        o.insert(QStringLiteral("timeMs"), static_cast<double>(e.timeMs));
-        array.append(o);
-    }
-
-    QFile file(m_filePath);
-    if (!file.open(QIODevice::WriteOnly | QIODevice::Truncate))
-        return false;
-
-    file.write(QJsonDocument(array).toJson(QJsonDocument::Indented));
-    return true;
-}
-
 void Leaderboard::submitScore(const QString &name, int score, qint64 timeMs)
 {
     QVector<LeaderboardEntry> entries = loadAll();
 
-    LeaderboardEntry e;
-    e.name = name.trimmed().left(20);
-    e.score = score;
-    e.timeMs = timeMs;
-    entries.push_back(e);
+    // Create and add the new entry
+    LeaderboardEntry newEntry;
+    newEntry.name = name;
+    newEntry.score = score;
+    newEntry.timeMs = timeMs;
+    entries.append(newEntry);
 
-    sortEntries(entries);
-    if (entries.size() > 100)           // keep the file small
-        entries.resize(100);
-
-    if (saveAll(entries))
+    // Save back to the JSON file
+    if (saveAll(entries)) {
         emit scoreSubmitted();
-    else
-        emit errorOccurred(tr("Could not save score to %1").arg(m_filePath));
+    } else {
+        emit errorOccurred("Failed to write score submission to data file.");
+    }
 }
 
 void Leaderboard::fetchTop10()
 {
     QVector<LeaderboardEntry> entries = loadAll();
-    sortEntries(entries);
-    if (entries.size() > 10)
+
+    // Sort: Highest score first. If scores are equal, lower time (faster) wins.
+    std::sort(entries.begin(), entries.end(), [](const LeaderboardEntry &a, const LeaderboardEntry &b) {
+        if (a.score != b.score) {
+            return a.score > b.score;
+        }
+        return a.timeMs < b.timeMs;
+    });
+
+    // Slice to keep only the top 10 items
+    if (entries.size() > 10) {
         entries.resize(10);
+    }
+
     emit topFetched(entries);
+}
+
+QVector<LeaderboardEntry> Leaderboard::loadAll() const
+{
+    QVector<LeaderboardEntry> entries;
+    QFile file(m_filePath);
+
+    if (!file.exists()) {
+        return entries; // Return empty vector safely if file doesn't exist yet
+    }
+
+    if (!file.open(QIODevice::ReadOnly)) {
+        return entries;
+    }
+
+    QByteArray data = file.readAll();
+    file.close();
+
+    QJsonDocument doc = QJsonDocument::fromJson(data);
+    if (!doc.isArray()) {
+        return entries;
+    }
+
+    QJsonArray array = doc.array();
+    for (const QJsonValue &value : array) {
+        if (value.isObject()) {
+            QJsonObject obj = value.toObject();
+            LeaderboardEntry entry;
+            entry.name = obj.value("name").toString();
+            entry.score = obj.value("score").toInt();
+            entry.timeMs = obj.value("timeMs").toVariant().toLongLong();
+            entries.append(entry);
+        }
+    }
+
+    return entries;
+}
+
+bool Leaderboard::saveAll(const QVector<LeaderboardEntry> &entries) const
+{
+    QFile file(m_filePath);
+    if (!file.open(QIODevice::WriteOnly)) {
+        return false;
+    }
+
+    QJsonArray array;
+    for (const LeaderboardEntry &entry : entries) {
+        QJsonObject obj;
+        obj["name"] = entry.name;
+        obj["score"] = entry.score;
+        obj["timeMs"] = entry.timeMs;
+        array.append(obj);
+    }
+
+    QJsonDocument doc(array);
+    file.write(doc.toJson());
+    file.close();
+    return true;
 }

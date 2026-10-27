@@ -1,11 +1,12 @@
 /**
  * resultscreen.cpp
  * -----------------------------------------------------------
- * ResultScreen implementation — Phase 4
+ * ResultScreen implementation — Phase 4 (Leaderboard Added)
  * -----------------------------------------------------------
  */
 
 #include "resultscreen.h"
+#include "leaderboarddialog.h" // <-- Added to display the window
 
 #include <QVBoxLayout>
 #include <QHBoxLayout>
@@ -25,7 +26,7 @@ ResultScreen::ResultScreen(QWidget *parent)
 // setResults
 // Populates all display labels before the screen is shown.
 // -----------------------------------------------------------------------
-void ResultScreen::setResults(int score, int timeTakenSeconds,
+void ResultScreen::setResults(const QString &playerName,int score, int timeTakenSeconds,
                               int hintsUsed, int wrongCount,
                               int solvedCount, int totalChallenges)
 {
@@ -76,6 +77,10 @@ void ResultScreen::setResults(int score, int timeTakenSeconds,
     } else {
         m_rankLabel->setText("🔰 Rank: Apprentice Debugger");
     }
+    // Save these variables locally for the submission engine to access safely
+    m_storedPlayerName = playerName;
+    m_storedScore = score;
+    m_storedTimeSeconds = timeTakenSeconds;
 }
 
 // -----------------------------------------------------------------------
@@ -83,6 +88,25 @@ void ResultScreen::setResults(int score, int timeTakenSeconds,
 // -----------------------------------------------------------------------
 void ResultScreen::onPlayAgainClicked() { emit playAgainRequested(); }
 void ResultScreen::onHomeClicked()      { emit homeRequested(); }
+
+void ResultScreen::onLeaderboardClicked()
+{
+    // 1. Instantiate the background data ledger and save the round data
+    Leaderboard backend(this);
+    
+    // Pass name, score, and compute total milliseconds running runtime
+    qint64 timeMs = static_cast<qint64>(m_storedTimeSeconds) * 1000;
+    
+    backend.submitScore(m_storedPlayerName, m_storedScore, timeMs);
+
+    // Instantiates the dialog on the heap safely so it draws properly
+    LeaderboardDialog *dialog = new LeaderboardDialog(this);
+    dialog->setModal(true);
+    dialog->setAttribute(Qt::WA_DeleteOnClose);
+    dialog->show();
+    dialog->raise();
+    dialog->activateWindow();
+}
 
 // -----------------------------------------------------------------------
 // buildLayout  (private)
@@ -139,6 +163,7 @@ void ResultScreen::buildLayout()
     cardLayout->addWidget(m_wrongsLabel);
 
     mainLayout->addWidget(card);
+    
 
     // Rank badge
     m_rankLabel = new QLabel("🥇 Rank: Debug Master", this);
@@ -148,7 +173,7 @@ void ResultScreen::buildLayout()
 
     mainLayout->addSpacing(10);
 
-    // Buttons
+    // Buttons Row Layout
     auto *btnRow = new QHBoxLayout();
     btnRow->setAlignment(Qt::AlignCenter);
     btnRow->setSpacing(20);
@@ -156,15 +181,24 @@ void ResultScreen::buildLayout()
     m_homeBtn = new QPushButton("🏠  Home", this);
     m_homeBtn->setObjectName("homeBtn");
     m_homeBtn->setMinimumHeight(46);
-    m_homeBtn->setMinimumWidth(150);
+    m_homeBtn->setMinimumWidth(140);
     m_homeBtn->setCursor(Qt::PointingHandCursor);
     connect(m_homeBtn, &QPushButton::clicked, this, &ResultScreen::onHomeClicked);
     btnRow->addWidget(m_homeBtn);
 
+    // New Leaderboard Button added in the middle slot
+    m_leaderboardBtn = new QPushButton("🏆  Leaderboard", this);
+    m_leaderboardBtn->setObjectName("leaderboardBtn");
+    m_leaderboardBtn->setMinimumHeight(46);
+    m_leaderboardBtn->setMinimumWidth(150);
+    m_leaderboardBtn->setCursor(Qt::PointingHandCursor);
+    connect(m_leaderboardBtn, &QPushButton::clicked, this, &ResultScreen::onLeaderboardClicked);
+    btnRow->addWidget(m_leaderboardBtn);
+
     m_playAgainBtn = new QPushButton("▶  Play Again", this);
     m_playAgainBtn->setObjectName("playAgainBtn");
     m_playAgainBtn->setMinimumHeight(46);
-    m_playAgainBtn->setMinimumWidth(150);
+    m_playAgainBtn->setMinimumWidth(140);
     m_playAgainBtn->setCursor(Qt::PointingHandCursor);
     connect(m_playAgainBtn, &QPushButton::clicked, this, &ResultScreen::onPlayAgainClicked);
     btnRow->addWidget(m_playAgainBtn);
@@ -180,10 +214,7 @@ void ResultScreen::applyStyles()
 {
     setStyleSheet(R"(
         ResultScreen {
-            background: qlineargradient(
-                x1:0, y1:0, x2:0, y2:1,
-                stop:0 #0f0c29, stop:0.5 #1a1a4e, stop:1 #0f0c29
-            );
+            background-color: #000000; /* Overridden to match your true black theme */
         }
 
         QLabel#bannerLabel {
@@ -191,6 +222,7 @@ void ResultScreen::applyStyles()
             font-weight: 900;
             color: #ffffff;
             font-family: 'Segoe UI', sans-serif;
+            background: transparent;
         }
 
         QFrame#separator {
@@ -209,12 +241,14 @@ void ResultScreen::applyStyles()
             font-weight: bold;
             color: #ffd060;
             font-family: 'Segoe UI', sans-serif;
+            background: transparent;
         }
 
         QLabel#resultStatLabel {
             font-size: 15px;
             color: #c0c8ff;
             font-family: 'Segoe UI', sans-serif;
+            background: transparent;
         }
 
         QLabel#rankLabel {
@@ -239,9 +273,21 @@ void ResultScreen::applyStyles()
         }
         QPushButton#homeBtn:hover { background: rgba(255,255,255,0.15); }
 
+        QPushButton#leaderboardBtn {
+            background: rgba(255,255,255,0.08);
+            color: #ffffff;
+            border: 1px solid #7b2ff7;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: bold;
+            padding: 10px 24px;
+        }
+        QPushButton#leaderboardBtn:hover { background: rgba(123, 47, 247, 0.25); }
+
         QPushButton#playAgainBtn {
-            background: qlineargradient(x1:0,y1:0,x2:1,y2:0,
-                stop:0 #7b2ff7, stop:1 #f107a3);
+            background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+                stop:0 #7b2ff7, stop:1 #f107a3
+            );
             color: #ffffff;
             border: none;
             border-radius: 10px;
@@ -250,8 +296,9 @@ void ResultScreen::applyStyles()
             padding: 10px 24px;
         }
         QPushButton#playAgainBtn:hover {
-            background: qlineargradient(x1:0,y1:0,x2:1,y2:0,
-                stop:0 #9b4fff, stop:1 #ff30c0);
+            background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+                stop:0 #9b4fff, stop:1 #ff30c0
+            );
         }
     )");
 }

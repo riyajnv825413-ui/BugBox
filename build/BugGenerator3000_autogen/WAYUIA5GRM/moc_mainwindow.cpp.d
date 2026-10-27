@@ -1,5 +1,13 @@
 C:/Users/riyaj/Documents/BugGenerator3000/build/BugGenerator3000_autogen/WAYUIA5GRM/moc_mainwindow.cpp: C:/Users/riyaj/Documents/BugGenerator3000/src/UI/mainwindow.h \
   C:/Users/riyaj/Documents/BugGenerator3000/build/BugGenerator3000_autogen/moc_predefs.h \
+  C:/Users/riyaj/Documents/BugGenerator3000/src/UI/debugscreen.h \
+  C:/Users/riyaj/Documents/BugGenerator3000/src/UI/homescreen.h \
+  C:/Users/riyaj/Documents/BugGenerator3000/src/UI/resultscreen.h \
+  C:/Users/riyaj/Documents/BugGenerator3000/src/bug_engine/BugData.h \
+  C:/Users/riyaj/Documents/BugGenerator3000/src/bug_engine/bugchallenge.h \
+  C:/Users/riyaj/Documents/BugGenerator3000/src/bug_engine/bugchallengeadapter.h \
+  C:/Users/riyaj/Documents/BugGenerator3000/src/bug_engine/scoremanager.h \
+  C:/Users/riyaj/Documents/BugGenerator3000/src/compilation/CompilerEngine.h \
   C:/msys64/ucrt64/include/_mingw.h \
   C:/msys64/ucrt64/include/_mingw_locale.h \
   C:/msys64/ucrt64/include/_mingw_mac.h \
@@ -212,6 +220,15 @@ C:/Users/riyaj/Documents/BugGenerator3000/build/BugGenerator3000_autogen/WAYUIA5
   C:/msys64/ucrt64/include/pthread_signal.h \
   C:/msys64/ucrt64/include/pthread_time.h \
   C:/msys64/ucrt64/include/pthread_unistd.h \
+  C:/msys64/ucrt64/include/qt6/QtCore/QList \
+  C:/msys64/ucrt64/include/qt6/QtCore/QObject \
+  C:/msys64/ucrt64/include/qt6/QtCore/QRect \
+  C:/msys64/ucrt64/include/qt6/QtCore/QSize \
+  C:/msys64/ucrt64/include/qt6/QtCore/QSizeF \
+  C:/msys64/ucrt64/include/qt6/QtCore/QString \
+  C:/msys64/ucrt64/include/qt6/QtCore/QTimer \
+  C:/msys64/ucrt64/include/qt6/QtCore/QVector \
+  C:/msys64/ucrt64/include/qt6/QtCore/QtGlobal \
   C:/msys64/ucrt64/include/qt6/QtCore/q17memory.h \
   C:/msys64/ucrt64/include/qt6/QtCore/q20bit.h \
   C:/msys64/ucrt64/include/qt6/QtCore/q20functional.h \
@@ -221,6 +238,8 @@ C:/Users/riyaj/Documents/BugGenerator3000/build/BugGenerator3000_autogen/WAYUIA5
   C:/msys64/ucrt64/include/qt6/QtCore/q20utility.h \
   C:/msys64/ucrt64/include/qt6/QtCore/q23type_traits.h \
   C:/msys64/ucrt64/include/qt6/QtCore/q23utility.h \
+  C:/msys64/ucrt64/include/qt6/QtCore/qabstracteventdispatcher.h \
+  C:/msys64/ucrt64/include/qt6/QtCore/qabstractitemmodel.h \
   C:/msys64/ucrt64/include/qt6/QtCore/qalgorithms.h \
   C:/msys64/ucrt64/include/qt6/QtCore/qalloc.h \
   C:/msys64/ucrt64/include/qt6/QtCore/qanystringview.h \
@@ -231,6 +250,7 @@ C:/Users/riyaj/Documents/BugGenerator3000/build/BugGenerator3000_autogen/WAYUIA5
   C:/msys64/ucrt64/include/qt6/QtCore/qatomic.h \
   C:/msys64/ucrt64/include/qt6/QtCore/qatomic_cxx11.h \
   C:/msys64/ucrt64/include/qt6/QtCore/qbasicatomic.h \
+  C:/msys64/ucrt64/include/qt6/QtCore/qbasictimer.h \
   C:/msys64/ucrt64/include/qt6/QtCore/qbindingstorage.h \
   C:/msys64/ucrt64/include/qt6/QtCore/qbytearray.h \
   C:/msys64/ucrt64/include/qt6/QtCore/qbytearrayalgorithms.h \
@@ -248,10 +268,15 @@ C:/Users/riyaj/Documents/BugGenerator3000/build/BugGenerator3000_autogen/WAYUIA5
   C:/msys64/ucrt64/include/qt6/QtCore/qcontainerinfo.h \
   C:/msys64/ucrt64/include/qt6/QtCore/qcontainertools_impl.h \
   C:/msys64/ucrt64/include/qt6/QtCore/qcontiguouscache.h \
+  C:/msys64/ucrt64/include/qt6/QtCore/qcoreapplication.h \
+  C:/msys64/ucrt64/include/qt6/QtCore/qcoreapplication_platform.h \
+  C:/msys64/ucrt64/include/qt6/QtCore/qcoreevent.h \
   C:/msys64/ucrt64/include/qt6/QtCore/qdarwinhelpers.h \
   C:/msys64/ucrt64/include/qt6/QtCore/qdatastream.h \
+  C:/msys64/ucrt64/include/qt6/QtCore/qdeadlinetimer.h \
   C:/msys64/ucrt64/include/qt6/QtCore/qdebug.h \
   C:/msys64/ucrt64/include/qt6/QtCore/qendian.h \
+  C:/msys64/ucrt64/include/qt6/QtCore/qeventloop.h \
   C:/msys64/ucrt64/include/qt6/QtCore/qexceptionhandling.h \
   C:/msys64/ucrt64/include/qt6/QtCore/qflags.h \
   C:/msys64/ucrt64/include/qt6/QtCore/qfloat16.h \
@@ -263,12 +288,14 @@ C:/Users/riyaj/Documents/BugGenerator3000/build/BugGenerator3000_autogen/WAYUIA5
   C:/msys64/ucrt64/include/qt6/QtCore/qglobalstatic.h \
   C:/msys64/ucrt64/include/qt6/QtCore/qhash.h \
   C:/msys64/ucrt64/include/qt6/QtCore/qhashfunctions.h \
+  C:/msys64/ucrt64/include/qt6/QtCore/qiodevice.h \
   C:/msys64/ucrt64/include/qt6/QtCore/qiodevicebase.h \
   C:/msys64/ucrt64/include/qt6/QtCore/qiterable.h \
   C:/msys64/ucrt64/include/qt6/QtCore/qiterator.h \
   C:/msys64/ucrt64/include/qt6/QtCore/qlatin1stringview.h \
   C:/msys64/ucrt64/include/qt6/QtCore/qline.h \
   C:/msys64/ucrt64/include/qt6/QtCore/qlist.h \
+  C:/msys64/ucrt64/include/qt6/QtCore/qlocale.h \
   C:/msys64/ucrt64/include/qt6/QtCore/qlogging.h \
   C:/msys64/ucrt64/include/qt6/QtCore/qmalloc.h \
   C:/msys64/ucrt64/include/qt6/QtCore/qmap.h \
@@ -278,6 +305,7 @@ C:/Users/riyaj/Documents/BugGenerator3000/build/BugGenerator3000_autogen/WAYUIA5
   C:/msys64/ucrt64/include/qt6/QtCore/qmetatype.h \
   C:/msys64/ucrt64/include/qt6/QtCore/qminmax.h \
   C:/msys64/ucrt64/include/qt6/QtCore/qnamespace.h \
+  C:/msys64/ucrt64/include/qt6/QtCore/qnativeinterface.h \
   C:/msys64/ucrt64/include/qt6/QtCore/qnumeric.h \
   C:/msys64/ucrt64/include/qt6/QtCore/qobject.h \
   C:/msys64/ucrt64/include/qt6/QtCore/qobject_impl.h \
@@ -289,6 +317,7 @@ C:/Users/riyaj/Documents/BugGenerator3000/build/BugGenerator3000_autogen/WAYUIA5
   C:/msys64/ucrt64/include/qt6/QtCore/qprocessordetection.h \
   C:/msys64/ucrt64/include/qt6/QtCore/qrect.h \
   C:/msys64/ucrt64/include/qt6/QtCore/qrefcount.h \
+  C:/msys64/ucrt64/include/qt6/QtCore/qregularexpression.h \
   C:/msys64/ucrt64/include/qt6/QtCore/qscopedpointer.h \
   C:/msys64/ucrt64/include/qt6/QtCore/qscopeguard.h \
   C:/msys64/ucrt64/include/qt6/QtCore/qset.h \
@@ -324,6 +353,7 @@ C:/Users/riyaj/Documents/BugGenerator3000/build/BugGenerator3000_autogen/WAYUIA5
   C:/msys64/ucrt64/include/qt6/QtCore/qtenvironmentvariables.h \
   C:/msys64/ucrt64/include/qt6/QtCore/qtextstream.h \
   C:/msys64/ucrt64/include/qt6/QtCore/qtformat_impl.h \
+  C:/msys64/ucrt64/include/qt6/QtCore/qtimer.h \
   C:/msys64/ucrt64/include/qt6/QtCore/qtmetamacros.h \
   C:/msys64/ucrt64/include/qt6/QtCore/qtnoop.h \
   C:/msys64/ucrt64/include/qt6/QtCore/qtpreprocessorsupport.h \
@@ -334,42 +364,93 @@ C:/Users/riyaj/Documents/BugGenerator3000/build/BugGenerator3000_autogen/WAYUIA5
   C:/msys64/ucrt64/include/qt6/QtCore/qtversionchecks.h \
   C:/msys64/ucrt64/include/qt6/QtCore/qtypeinfo.h \
   C:/msys64/ucrt64/include/qt6/QtCore/qtypes.h \
+  C:/msys64/ucrt64/include/qt6/QtCore/qurl.h \
   C:/msys64/ucrt64/include/qt6/QtCore/qutf8stringview.h \
   C:/msys64/ucrt64/include/qt6/QtCore/qvariant.h \
   C:/msys64/ucrt64/include/qt6/QtCore/qvarlengtharray.h \
+  C:/msys64/ucrt64/include/qt6/QtCore/qvector.h \
   C:/msys64/ucrt64/include/qt6/QtCore/qversiontagging.h \
   C:/msys64/ucrt64/include/qt6/QtCore/qxptype_traits.h \
   C:/msys64/ucrt64/include/qt6/QtCore/qyieldcpu.h \
+  C:/msys64/ucrt64/include/qt6/QtGui/QTransform \
+  C:/msys64/ucrt64/include/qt6/QtGui/qabstracttextdocumentlayout.h \
   C:/msys64/ucrt64/include/qt6/QtGui/qaction.h \
   C:/msys64/ucrt64/include/qt6/QtGui/qbitmap.h \
   C:/msys64/ucrt64/include/qt6/QtGui/qbrush.h \
   C:/msys64/ucrt64/include/qt6/QtGui/qcolor.h \
   C:/msys64/ucrt64/include/qt6/QtGui/qcursor.h \
+  C:/msys64/ucrt64/include/qt6/QtGui/qevent.h \
+  C:/msys64/ucrt64/include/qt6/QtGui/qeventpoint.h \
   C:/msys64/ucrt64/include/qt6/QtGui/qfont.h \
+  C:/msys64/ucrt64/include/qt6/QtGui/qfontdatabase.h \
   C:/msys64/ucrt64/include/qt6/QtGui/qfontinfo.h \
   C:/msys64/ucrt64/include/qt6/QtGui/qfontmetrics.h \
   C:/msys64/ucrt64/include/qt6/QtGui/qfontvariableaxis.h \
+  C:/msys64/ucrt64/include/qt6/QtGui/qglyphrun.h \
+  C:/msys64/ucrt64/include/qt6/QtGui/qguiapplication.h \
+  C:/msys64/ucrt64/include/qt6/QtGui/qguiapplication_platform.h \
   C:/msys64/ucrt64/include/qt6/QtGui/qicon.h \
   C:/msys64/ucrt64/include/qt6/QtGui/qimage.h \
+  C:/msys64/ucrt64/include/qt6/QtGui/qinputdevice.h \
+  C:/msys64/ucrt64/include/qt6/QtGui/qinputmethod.h \
   C:/msys64/ucrt64/include/qt6/QtGui/qkeysequence.h \
   C:/msys64/ucrt64/include/qt6/QtGui/qpaintdevice.h \
   C:/msys64/ucrt64/include/qt6/QtGui/qpalette.h \
+  C:/msys64/ucrt64/include/qt6/QtGui/qpen.h \
+  C:/msys64/ucrt64/include/qt6/QtGui/qpicture.h \
   C:/msys64/ucrt64/include/qt6/QtGui/qpixelformat.h \
   C:/msys64/ucrt64/include/qt6/QtGui/qpixmap.h \
+  C:/msys64/ucrt64/include/qt6/QtGui/qpointingdevice.h \
   C:/msys64/ucrt64/include/qt6/QtGui/qpolygon.h \
+  C:/msys64/ucrt64/include/qt6/QtGui/qrawfont.h \
   C:/msys64/ucrt64/include/qt6/QtGui/qregion.h \
   C:/msys64/ucrt64/include/qt6/QtGui/qrgb.h \
   C:/msys64/ucrt64/include/qt6/QtGui/qrgba64.h \
+  C:/msys64/ucrt64/include/qt6/QtGui/qscreen.h \
+  C:/msys64/ucrt64/include/qt6/QtGui/qscreen_platform.h \
+  C:/msys64/ucrt64/include/qt6/QtGui/qtextcursor.h \
+  C:/msys64/ucrt64/include/qt6/QtGui/qtextdocument.h \
+  C:/msys64/ucrt64/include/qt6/QtGui/qtextformat.h \
+  C:/msys64/ucrt64/include/qt6/QtGui/qtextlayout.h \
+  C:/msys64/ucrt64/include/qt6/QtGui/qtextoption.h \
   C:/msys64/ucrt64/include/qt6/QtGui/qtgui-config.h \
   C:/msys64/ucrt64/include/qt6/QtGui/qtguiexports.h \
   C:/msys64/ucrt64/include/qt6/QtGui/qtguiglobal.h \
   C:/msys64/ucrt64/include/qt6/QtGui/qtransform.h \
+  C:/msys64/ucrt64/include/qt6/QtGui/qvalidator.h \
+  C:/msys64/ucrt64/include/qt6/QtGui/qvector2d.h \
+  C:/msys64/ucrt64/include/qt6/QtGui/qvectornd.h \
   C:/msys64/ucrt64/include/qt6/QtGui/qwindowdefs.h \
   C:/msys64/ucrt64/include/qt6/QtGui/qwindowdefs_win.h \
+  C:/msys64/ucrt64/include/qt6/QtWidgets/QComboBox \
+  C:/msys64/ucrt64/include/qt6/QtWidgets/QLabel \
+  C:/msys64/ucrt64/include/qt6/QtWidgets/QLineEdit \
   C:/msys64/ucrt64/include/qt6/QtWidgets/QMainWindow \
+  C:/msys64/ucrt64/include/qt6/QtWidgets/QPlainTextEdit \
+  C:/msys64/ucrt64/include/qt6/QtWidgets/QPushButton \
+  C:/msys64/ucrt64/include/qt6/QtWidgets/QStackedWidget \
+  C:/msys64/ucrt64/include/qt6/QtWidgets/QWidget \
+  C:/msys64/ucrt64/include/qt6/QtWidgets/qabstractbutton.h \
+  C:/msys64/ucrt64/include/qt6/QtWidgets/qabstractitemdelegate.h \
+  C:/msys64/ucrt64/include/qt6/QtWidgets/qabstractscrollarea.h \
+  C:/msys64/ucrt64/include/qt6/QtWidgets/qabstractslider.h \
+  C:/msys64/ucrt64/include/qt6/QtWidgets/qabstractspinbox.h \
+  C:/msys64/ucrt64/include/qt6/QtWidgets/qcombobox.h \
+  C:/msys64/ucrt64/include/qt6/QtWidgets/qframe.h \
+  C:/msys64/ucrt64/include/qt6/QtWidgets/qlabel.h \
+  C:/msys64/ucrt64/include/qt6/QtWidgets/qlineedit.h \
   C:/msys64/ucrt64/include/qt6/QtWidgets/qmainwindow.h \
+  C:/msys64/ucrt64/include/qt6/QtWidgets/qplaintextedit.h \
+  C:/msys64/ucrt64/include/qt6/QtWidgets/qpushbutton.h \
+  C:/msys64/ucrt64/include/qt6/QtWidgets/qrubberband.h \
   C:/msys64/ucrt64/include/qt6/QtWidgets/qsizepolicy.h \
+  C:/msys64/ucrt64/include/qt6/QtWidgets/qslider.h \
+  C:/msys64/ucrt64/include/qt6/QtWidgets/qstackedwidget.h \
+  C:/msys64/ucrt64/include/qt6/QtWidgets/qstyle.h \
+  C:/msys64/ucrt64/include/qt6/QtWidgets/qstyleoption.h \
+  C:/msys64/ucrt64/include/qt6/QtWidgets/qtabbar.h \
   C:/msys64/ucrt64/include/qt6/QtWidgets/qtabwidget.h \
+  C:/msys64/ucrt64/include/qt6/QtWidgets/qtextedit.h \
   C:/msys64/ucrt64/include/qt6/QtWidgets/qtwidgets-config.h \
   C:/msys64/ucrt64/include/qt6/QtWidgets/qtwidgetsexports.h \
   C:/msys64/ucrt64/include/qt6/QtWidgets/qtwidgetsglobal.h \

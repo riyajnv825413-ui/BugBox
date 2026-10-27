@@ -18,6 +18,7 @@
 #include <QComboBox>
 #include <QPushButton>
 #include <QLabel>
+#include <QLineEdit>
 
 #include "bugchallenge.h"   // for Difficulty enum
 
@@ -38,10 +39,11 @@ public:
 
 signals:
     // Emitted when the user clicks "Start Debugging".
-    void startRequested(Difficulty difficulty, GameMode mode);
+    void startRequested(const QString &playerName,Difficulty difficulty, GameMode mode);
 
 private slots:
     void onStartClicked();
+     void onLeaderboardButtonClicked();
 
 private:
     // --- Helpers --------------------------------------------------------
@@ -55,6 +57,8 @@ private:
     QComboBox   *m_difficultyCombo { nullptr };
     QComboBox   *m_gameModeCombo   { nullptr };
     QPushButton *m_startButton     { nullptr };
+    QLineEdit *m_nameLineEdit { nullptr };
+    QLabel *m_nameLabel { nullptr };
 };
 
 #endif // HOMESCREEN_H

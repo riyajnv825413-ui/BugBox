@@ -89,6 +89,18 @@ void Leaderboard::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         default: ;
         }
     }
+    if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        switch (_id) {
+        default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
+        case 1:
+            switch (*reinterpret_cast<int*>(_a[1])) {
+            default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
+            case 0:
+                *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< QList<LeaderboardEntry> >(); break;
+            }
+            break;
+        }
+    }
     if (_c == QMetaObject::IndexOfMethod) {
         if (QtMocHelpers::indexOfMethod<void (Leaderboard::*)()>(_a, &Leaderboard::scoreSubmitted, 0))
             return;
@@ -124,7 +136,7 @@ int Leaderboard::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
         if (_id < 3)
-            *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
+            qt_static_metacall(this, _c, _id, _a);
         _id -= 3;
     }
     return _id;

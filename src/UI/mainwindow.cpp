@@ -1,27 +1,6 @@
 #include "mainwindow.h"
-#include "./ui_mainwindow.h"
-
-MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
-{
-    ui->setupUi(this);
-}
-MainWindow::~MainWindow()
-{
-    delete ui;
-}
-/**
- * mainwindow.cpp
- * -----------------------------------------------------------
- * MainWindow implementation — Phase 5: Navigation
- * -----------------------------------------------------------
- */
-
-#include "mainwindow.h"
-
+#include "ui_mainwindow.h"
 #include <QVBoxLayout>
-
 #include "CompilerEngine.h"
 
 // -----------------------------------------------------------------------
@@ -29,7 +8,11 @@ MainWindow::~MainWindow()
 // -----------------------------------------------------------------------
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
+    , ui(new Ui::MainWindow)
 {
+    // Initialize the generated Qt UI layout
+    ui->setupUi(this);
+
     setWindowTitle("BUGBOX — Find the bug. Fix the code. Beat the clock.");
     setMinimumSize(1000, 680);
     resize(1200, 750);
@@ -42,9 +25,103 @@ MainWindow::MainWindow(QWidget *parent)
     m_compilerEngine = new CompilerEngine();
 
     setupScreens();
+    setStyleSheet(R"(
+        /* ---- Force global window backgrounds to pure black ---- */
+        QMainWindow, QStackedWidget, HomeScreen, DebugScreen, ResultScreen {
+            background-color: #000000;
+        }
+
+        /* ---- Central Card Containers ---- */
+        QWidget#statsCard, QWidget#centerContainer {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(160, 196, 255, 0.2);
+            border-radius: 14px;
+        }
+
+        /* ---- Universally make labels legible white text ---- */
+        QLabel {
+            color: #ffffff;
+            font-family: 'Segoe UI', sans-serif;
+            background: transparent;
+        }
+        
+        /* Highlight specific sub-captions/hints */
+        QLabel#subtitleLabel, QLabel#resultStatLabel {
+            color: #a0c4ff;
+        }
+        
+        /* Title adjustments */
+        QLabel#titleLabel, QLabel#bannerLabel {
+            font-size: 46px;
+            font-weight: 900;
+            color: #ffffff;
+            letter-spacing: 4px;
+        }
+
+        /* ---- Dropdown ComboBoxes & Inputs ---- */
+        QComboBox, QLineEdit {
+            background: rgba(255, 255, 255, 0.08);
+            color: #ffffff;
+            border: 1px solid #5050b0;
+            border-radius: 8px;
+            padding: 8px 14px;
+            font-size: 14px;
+        }
+        QLineEdit:focus, QComboBox:focus {
+            border: 1px solid #7b2ff7;
+        }
+
+        /* Dropdown selection view panels */
+        QComboBox QAbstractItemView {
+            background-color: #1a1a4e;
+            color: #ffffff;
+            selection-background-color: #3a3a9a;
+            selection-color: #ffffff;
+            border: 1px solid #5050b0;
+        }
+
+        /* ---- Buttons ---- */
+        QPushButton {
+            background: rgba(255, 255, 255, 0.08);
+            color: #a0c4ff;
+            border: 1px solid #3a3a8a;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: bold;
+            padding: 10px 24px;
+        }
+        QPushButton:hover { 
+            background: rgba(255, 255, 255, 0.15); 
+        }
+
+        /* Standout action button overrides (like Start Debugging) */
+        QPushButton#m_startBtn, QPushButton#startButton, QPushButton#playAgainBtn {
+            background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+                stop:0 #7b2ff7, stop:1 #f107a3
+            );
+            color: #ffffff;
+            border: none;
+        }
+        QPushButton#m_startBtn:hover, QPushButton#startButton:hover, QPushButton#playAgainBtn:hover {
+            background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+                stop:0 #9b4fff, stop:1 #ff30c0
+            );
+        }
+    )");
 
     // Start on the Home screen.
     showScreen(kHomeIndex);
+   
+}
+
+// -----------------------------------------------------------------------
+// Destructor
+// -----------------------------------------------------------------------
+MainWindow::~MainWindow()
+{
+    delete ui;
+    // Note: m_adapter, m_compilerEngine, and m_stack are automatically 
+    // deleted by Qt because they are bound to 'this' as children.
 }
 
 // -----------------------------------------------------------------------
@@ -103,8 +180,9 @@ void MainWindow::showScreen(int index)
 // onStartRequested  (slot)
 // Triggered by HomeScreen when user clicks "Start Debugging".
 // -----------------------------------------------------------------------
-void MainWindow::onStartRequested(Difficulty difficulty, GameMode mode)
+void MainWindow::onStartRequested(const QString &playerName,Difficulty difficulty, GameMode mode)
 {
+    m_playerName     = playerName;
     m_lastDifficulty = difficulty;
     m_lastGameMode   = mode;
 
@@ -127,7 +205,7 @@ void MainWindow::onStartRequested(Difficulty difficulty, GameMode mode)
 void MainWindow::onSessionFinished(int score, int timeSecs, int hints, int wrongs,
                                    int solved, int totalChallenges)
 {
-    m_result->setResults(score, timeSecs, hints, wrongs, solved, totalChallenges);
+    m_result->setResults(m_playerName,score, timeSecs, hints, wrongs, solved, totalChallenges);
     showScreen(kResultIndex);
 }
 
@@ -154,5 +232,8 @@ void MainWindow::onHomeFromResult()
 // -----------------------------------------------------------------------
 void MainWindow::onPlayAgain()
 {
-    onStartRequested(m_lastDifficulty, m_lastGameMode);
+    onStartRequested(m_playerName,m_lastDifficulty, m_lastGameMode);
 }
+
+
+    

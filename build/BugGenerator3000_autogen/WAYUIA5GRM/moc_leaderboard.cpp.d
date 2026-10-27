@@ -205,6 +205,7 @@ C:/Users/riyaj/Documents/BugGenerator3000/build/BugGenerator3000_autogen/WAYUIA5
   C:/msys64/ucrt64/include/pthread_signal.h \
   C:/msys64/ucrt64/include/pthread_time.h \
   C:/msys64/ucrt64/include/pthread_unistd.h \
+  C:/msys64/ucrt64/include/qt6/QtCore/QMetaType \
   C:/msys64/ucrt64/include/qt6/QtCore/QObject \
   C:/msys64/ucrt64/include/qt6/QtCore/QString \
   C:/msys64/ucrt64/include/qt6/QtCore/QVector \

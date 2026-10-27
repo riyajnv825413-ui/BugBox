@@ -19,17 +19,9 @@
 #define BUGCHALLENGE_H
 
 #include <QString>
-
-// Difficulty levels understood by the whole application.
-enum class Difficulty {
-    Easy,
-    Medium,
-    Hard
-};
-
-// How many challenges to play after the user clicks Start.
+#include "BugData.h"
 enum class GameMode {
-    FullRun,    // Every challenge at the chosen difficulty
+    FullRun,
     QuickRound  // One challenge only (good for a quick demo)
 };
 
@@ -81,7 +73,7 @@ private:
     QString    m_expectedOutput;
     QString    m_solution;
     QString    m_hint;
-    Difficulty m_difficulty { Difficulty::Easy };
+    Difficulty m_difficulty { Difficulty::EASY }; // Explicitly set to uppercase EASY
 };
 
-#endif // BUGCHALLENGE_H
+#endif

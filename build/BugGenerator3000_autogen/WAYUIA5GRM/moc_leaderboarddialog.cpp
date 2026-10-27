@@ -40,25 +40,22 @@ template <> constexpr inline auto LeaderboardDialog::qt_create_metaobjectdata<qt
     namespace QMC = QtMocConstants;
     QtMocHelpers::StringRefStorage qt_stringData {
         "LeaderboardDialog",
-        "refresh",
-        "",
         "onTopFetched",
+        "",
         "QList<LeaderboardEntry>",
         "entries",
-        "onError",
+        "onLeaderboardError",
         "message"
     };
 
     QtMocHelpers::UintData qt_methods {
-        // Slot 'refresh'
-        QtMocHelpers::SlotData<void()>(1, 2, QMC::AccessPublic, QMetaType::Void),
         // Slot 'onTopFetched'
-        QtMocHelpers::SlotData<void(const QVector<LeaderboardEntry> &)>(3, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { 0x80000000 | 4, 5 },
+        QtMocHelpers::SlotData<void(const QVector<LeaderboardEntry> &)>(1, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { 0x80000000 | 3, 4 },
         }}),
-        // Slot 'onError'
-        QtMocHelpers::SlotData<void(const QString &)>(6, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { QMetaType::QString, 7 },
+        // Slot 'onLeaderboardError'
+        QtMocHelpers::SlotData<void(const QString &)>(5, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::QString, 6 },
         }}),
     };
     QtMocHelpers::UintData qt_properties {
@@ -83,10 +80,21 @@ void LeaderboardDialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, in
     auto *_t = static_cast<LeaderboardDialog *>(_o);
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
-        case 0: _t->refresh(); break;
-        case 1: _t->onTopFetched((*reinterpret_cast<std::add_pointer_t<QList<LeaderboardEntry>>>(_a[1]))); break;
-        case 2: _t->onError((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
+        case 0: _t->onTopFetched((*reinterpret_cast<std::add_pointer_t<QList<LeaderboardEntry>>>(_a[1]))); break;
+        case 1: _t->onLeaderboardError((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
         default: ;
+        }
+    }
+    if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        switch (_id) {
+        default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
+        case 0:
+            switch (*reinterpret_cast<int*>(_a[1])) {
+            default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
+            case 0:
+                *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< QList<LeaderboardEntry> >(); break;
+            }
+            break;
         }
     }
 }
@@ -110,14 +118,14 @@ int LeaderboardDialog::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 3)
+        if (_id < 2)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 3;
+        _id -= 2;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 3)
-            *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 3;
+        if (_id < 2)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 2;
     }
     return _id;
 }

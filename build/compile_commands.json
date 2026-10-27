@@ -118,5 +118,11 @@
   "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 -IC:/Users/riyaj/Documents/BugGenerator3000/build/BugGenerator3000_autogen/include -IC:/Users/riyaj/Documents/BugGenerator3000/src -IC:/Users/riyaj/Documents/BugGenerator3000/src/bug_engine -IC:/Users/riyaj/Documents/BugGenerator3000/src/compilation -IC:/Users/riyaj/Documents/BugGenerator3000/src/UI -isystem C:/msys64/ucrt64/include/qt6/QtWidgets -isystem C:/msys64/ucrt64/include/qt6 -isystem C:/msys64/ucrt64/include/qt6/QtCore -isystem C:/msys64/ucrt64/share/qt6/mkspecs/win32-g++ -isystem C:/msys64/ucrt64/include/qt6/QtGui -g -std=gnu++17 -o CMakeFiles\\BugGenerator3000.dir\\src\\compilation\\CompilerEngine.cpp.obj -c C:\\Users\\riyaj\\Documents\\BugGenerator3000\\src\\compilation\\CompilerEngine.cpp",
   "file": "C:/Users/riyaj/Documents/BugGenerator3000/src/compilation/CompilerEngine.cpp",
   "output": "C:/Users/riyaj/Documents/BugGenerator3000/build/CMakeFiles/BugGenerator3000.dir/src/compilation/CompilerEngine.cpp.obj"
+},
+{
+  "directory": "C:/Users/riyaj/Documents/BugGenerator3000/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 -IC:/Users/riyaj/Documents/BugGenerator3000/build/BugGenerator3000_autogen/include -IC:/Users/riyaj/Documents/BugGenerator3000/src -IC:/Users/riyaj/Documents/BugGenerator3000/src/bug_engine -IC:/Users/riyaj/Documents/BugGenerator3000/src/compilation -IC:/Users/riyaj/Documents/BugGenerator3000/src/UI -isystem C:/msys64/ucrt64/include/qt6/QtWidgets -isystem C:/msys64/ucrt64/include/qt6 -isystem C:/msys64/ucrt64/include/qt6/QtCore -isystem C:/msys64/ucrt64/share/qt6/mkspecs/win32-g++ -isystem C:/msys64/ucrt64/include/qt6/QtGui -g -std=gnu++17 -o CMakeFiles\\BugGenerator3000.dir\\src\\main.cpp.obj -c C:\\Users\\riyaj\\Documents\\BugGenerator3000\\src\\main.cpp",
+  "file": "C:/Users/riyaj/Documents/BugGenerator3000/src/main.cpp",
+  "output": "C:/Users/riyaj/Documents/BugGenerator3000/build/CMakeFiles/BugGenerator3000.dir/src/main.cpp.obj"
 }
 ]

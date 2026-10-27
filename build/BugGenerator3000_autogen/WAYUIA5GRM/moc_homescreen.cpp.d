@@ -1,5 +1,6 @@
 C:/Users/riyaj/Documents/BugGenerator3000/build/BugGenerator3000_autogen/WAYUIA5GRM/moc_homescreen.cpp: C:/Users/riyaj/Documents/BugGenerator3000/src/UI/homescreen.h \
   C:/Users/riyaj/Documents/BugGenerator3000/build/BugGenerator3000_autogen/moc_predefs.h \
+  C:/Users/riyaj/Documents/BugGenerator3000/src/bug_engine/BugData.h \
   C:/Users/riyaj/Documents/BugGenerator3000/src/bug_engine/bugchallenge.h \
   C:/msys64/ucrt64/include/_mingw.h \
   C:/msys64/ucrt64/include/_mingw_locale.h \
@@ -361,6 +362,7 @@ C:/Users/riyaj/Documents/BugGenerator3000/build/BugGenerator3000_autogen/WAYUIA5
   C:/msys64/ucrt64/include/qt6/QtGui/qkeysequence.h \
   C:/msys64/ucrt64/include/qt6/QtGui/qpaintdevice.h \
   C:/msys64/ucrt64/include/qt6/QtGui/qpalette.h \
+  C:/msys64/ucrt64/include/qt6/QtGui/qpen.h \
   C:/msys64/ucrt64/include/qt6/QtGui/qpicture.h \
   C:/msys64/ucrt64/include/qt6/QtGui/qpixelformat.h \
   C:/msys64/ucrt64/include/qt6/QtGui/qpixmap.h \
@@ -368,7 +370,10 @@ C:/Users/riyaj/Documents/BugGenerator3000/build/BugGenerator3000_autogen/WAYUIA5
   C:/msys64/ucrt64/include/qt6/QtGui/qregion.h \
   C:/msys64/ucrt64/include/qt6/QtGui/qrgb.h \
   C:/msys64/ucrt64/include/qt6/QtGui/qrgba64.h \
+  C:/msys64/ucrt64/include/qt6/QtGui/qtextcursor.h \
   C:/msys64/ucrt64/include/qt6/QtGui/qtextdocument.h \
+  C:/msys64/ucrt64/include/qt6/QtGui/qtextformat.h \
+  C:/msys64/ucrt64/include/qt6/QtGui/qtextoption.h \
   C:/msys64/ucrt64/include/qt6/QtGui/qtgui-config.h \
   C:/msys64/ucrt64/include/qt6/QtGui/qtguiexports.h \
   C:/msys64/ucrt64/include/qt6/QtGui/qtguiglobal.h \
@@ -378,6 +383,7 @@ C:/Users/riyaj/Documents/BugGenerator3000/build/BugGenerator3000_autogen/WAYUIA5
   C:/msys64/ucrt64/include/qt6/QtGui/qwindowdefs_win.h \
   C:/msys64/ucrt64/include/qt6/QtWidgets/QComboBox \
   C:/msys64/ucrt64/include/qt6/QtWidgets/QLabel \
+  C:/msys64/ucrt64/include/qt6/QtWidgets/QLineEdit \
   C:/msys64/ucrt64/include/qt6/QtWidgets/QPushButton \
   C:/msys64/ucrt64/include/qt6/QtWidgets/QWidget \
   C:/msys64/ucrt64/include/qt6/QtWidgets/qabstractbutton.h \
@@ -387,6 +393,7 @@ C:/Users/riyaj/Documents/BugGenerator3000/build/BugGenerator3000_autogen/WAYUIA5
   C:/msys64/ucrt64/include/qt6/QtWidgets/qcombobox.h \
   C:/msys64/ucrt64/include/qt6/QtWidgets/qframe.h \
   C:/msys64/ucrt64/include/qt6/QtWidgets/qlabel.h \
+  C:/msys64/ucrt64/include/qt6/QtWidgets/qlineedit.h \
   C:/msys64/ucrt64/include/qt6/QtWidgets/qpushbutton.h \
   C:/msys64/ucrt64/include/qt6/QtWidgets/qrubberband.h \
   C:/msys64/ucrt64/include/qt6/QtWidgets/qsizepolicy.h \

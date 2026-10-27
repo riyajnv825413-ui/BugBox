@@ -42,20 +42,24 @@ template <> constexpr inline auto HomeScreen::qt_create_metaobjectdata<qt_meta_t
         "HomeScreen",
         "startRequested",
         "",
+        "playerName",
         "Difficulty",
         "difficulty",
         "GameMode",
         "mode",
-        "onStartClicked"
+        "onStartClicked",
+        "onLeaderboardButtonClicked"
     };
 
     QtMocHelpers::UintData qt_methods {
         // Signal 'startRequested'
-        QtMocHelpers::SignalData<void(Difficulty, GameMode)>(1, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { 0x80000000 | 3, 4 }, { 0x80000000 | 5, 6 },
+        QtMocHelpers::SignalData<void(const QString &, Difficulty, GameMode)>(1, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QString, 3 }, { 0x80000000 | 4, 5 }, { 0x80000000 | 6, 7 },
         }}),
         // Slot 'onStartClicked'
-        QtMocHelpers::SlotData<void()>(7, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(8, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'onLeaderboardButtonClicked'
+        QtMocHelpers::SlotData<void()>(9, 2, QMC::AccessPrivate, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -79,13 +83,14 @@ void HomeScreen::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
     auto *_t = static_cast<HomeScreen *>(_o);
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
-        case 0: _t->startRequested((*reinterpret_cast<std::add_pointer_t<Difficulty>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<GameMode>>(_a[2]))); break;
+        case 0: _t->startRequested((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<Difficulty>>(_a[2])),(*reinterpret_cast<std::add_pointer_t<GameMode>>(_a[3]))); break;
         case 1: _t->onStartClicked(); break;
+        case 2: _t->onLeaderboardButtonClicked(); break;
         default: ;
         }
     }
     if (_c == QMetaObject::IndexOfMethod) {
-        if (QtMocHelpers::indexOfMethod<void (HomeScreen::*)(Difficulty , GameMode )>(_a, &HomeScreen::startRequested, 0))
+        if (QtMocHelpers::indexOfMethod<void (HomeScreen::*)(const QString & , Difficulty , GameMode )>(_a, &HomeScreen::startRequested, 0))
             return;
     }
 }
@@ -109,21 +114,21 @@ int HomeScreen::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 2)
+        if (_id < 3)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 2;
+        _id -= 3;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 2)
+        if (_id < 3)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 2;
+        _id -= 3;
     }
     return _id;
 }
 
 // SIGNAL 0
-void HomeScreen::startRequested(Difficulty _t1, GameMode _t2)
+void HomeScreen::startRequested(const QString & _t1, Difficulty _t2, GameMode _t3)
 {
-    QMetaObject::activate<void>(this, &staticMetaObject, 0, nullptr, _t1, _t2);
+    QMetaObject::activate<void>(this, &staticMetaObject, 0, nullptr, _t1, _t2, _t3);
 }
 QT_WARNING_POP

@@ -4,15 +4,15 @@ project(BugGenerator3000 LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Handle UI compilation automatically for Rishika's screens
+# Required automatically for Qt UI layout components
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)
 
-# Target the active framework installation
+# Find Qt Libraries
 find_package(Qt6 COMPONENTS Widgets REQUIRED)
 
-# Include paths for all source code headers
+# Include paths for all source code headers - THIS KILLS THE ERROR
 include_directories(
     src
     src/bug_engine
@@ -34,7 +34,7 @@ file(GLOB_RECURSE PROJECT_SOURCES
     "src/UI/*.ui"
 )
 
-# Generate final cohesive executable binary
+# Locate your add_executable line and ensure WIN32 is present:
 add_executable(BugGenerator3000 ${PROJECT_SOURCES})
 
 # Target-link dependencies

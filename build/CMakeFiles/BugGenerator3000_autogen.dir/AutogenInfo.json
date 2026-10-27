@@ -564,7 +564,8 @@
 			"C:/Users/riyaj/Documents/BugGenerator3000/src/compilation/CompilerEngine.cpp",
 			"MU",
 			null
-		]
+		],
+		[ "C:/Users/riyaj/Documents/BugGenerator3000/src/main.cpp", "MU", null ]
 	],
 	"UIC_OPTIONS" : [],
 	"UIC_SEARCH_PATHS" : [],

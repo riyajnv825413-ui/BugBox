@@ -1,5 +1,6 @@
 C:/Users/riyaj/Documents/BugGenerator3000/build/BugGenerator3000_autogen/WAYUIA5GRM/moc_debugscreen.cpp: C:/Users/riyaj/Documents/BugGenerator3000/src/UI/debugscreen.h \
   C:/Users/riyaj/Documents/BugGenerator3000/build/BugGenerator3000_autogen/moc_predefs.h \
+  C:/Users/riyaj/Documents/BugGenerator3000/src/bug_engine/BugData.h \
   C:/Users/riyaj/Documents/BugGenerator3000/src/bug_engine/bugchallenge.h \
   C:/Users/riyaj/Documents/BugGenerator3000/src/bug_engine/scoremanager.h \
   C:/Users/riyaj/Documents/BugGenerator3000/src/compilation/CompilerEngine.h \

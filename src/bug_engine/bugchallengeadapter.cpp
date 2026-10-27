@@ -68,7 +68,7 @@ void BugChallengeAdapter::loadMockChallenges()
         "}",
         // --- hint ---
         "Check the loop condition: should it be < 5 or <= 5?",
-        Difficulty::Easy
+        Difficulty::EASY
     ));
 
     m_challenges.append(BugChallenge(
@@ -89,7 +89,7 @@ void BugChallengeAdapter::loadMockChallenges()
         "    return 0;\n"
         "}",
         "Look at the end of the cout line. Does every statement end with a semicolon?",
-        Difficulty::Easy
+        Difficulty::EASY
     ));
 
     m_challenges.append(BugChallenge(
@@ -108,7 +108,7 @@ void BugChallengeAdapter::loadMockChallenges()
         "    return false;\n"
         "}",
         "In C++, a single = assigns a value. To compare, you need ==.",
-        Difficulty::Easy
+        Difficulty::EASY
     ));
 
     // ===== MEDIUM CHALLENGES ============================================
@@ -141,7 +141,7 @@ void BugChallengeAdapter::loadMockChallenges()
         "    return 0;\n"
         "}",
         "An array of size 5 has valid indices 0 through 4. What does i <= 5 do on the last iteration?",
-        Difficulty::Medium
+        Difficulty::MEDIUM
     ));
 
     m_challenges.append(BugChallenge(
@@ -172,7 +172,7 @@ void BugChallengeAdapter::loadMockChallenges()
         "    return 0;\n"
         "}",
         "What has to change inside the loop body so that the condition eventually becomes false?",
-        Difficulty::Medium
+        Difficulty::MEDIUM
     ));
 
     m_challenges.append(BugChallenge(
@@ -201,7 +201,7 @@ void BugChallengeAdapter::loadMockChallenges()
         "    return 0;\n"
         "}",
         "For a multiplication accumulator, what should the starting value be?",
-        Difficulty::Medium
+        Difficulty::MEDIUM
     ));
 
     // ===== HARD CHALLENGES ===============================================
@@ -236,7 +236,7 @@ void BugChallengeAdapter::loadMockChallenges()
         "    return 0;\n"
         "}",
         "Local variables are destroyed when the function returns. Who owns the memory after the function exits?",
-        Difficulty::Hard
+        Difficulty::HARD
     ));
 
     m_challenges.append(BugChallenge(
@@ -265,7 +265,7 @@ void BugChallengeAdapter::loadMockChallenges()
         "    return 0;\n"
         "}",
         "Every recursive function needs one or more base cases that stop the recursion. What are the two base cases for Fibonacci?",
-        Difficulty::Hard
+        Difficulty::HARD
     ));
 
 m_challenges.append(BugChallenge(
@@ -294,6 +294,6 @@ m_challenges.append(BugChallenge(
         "    return 0;\n"
         "}",
         "A 32-bit signed int can only hold values up to ~2.1 billion. 2^31 = 2,147,483,648 — what type can hold larger numbers?",
-        Difficulty::Hard
+        Difficulty::HARD
     ));
 }
