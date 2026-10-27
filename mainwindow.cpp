@@ -8,8 +8,12 @@
 #include "mainwindow.h"
 
 #include <QVBoxLayout>
+#include <QInputDialog>
+#include <QLineEdit>
 
 #include "CompilerEngine.h"
+#include "leaderboard.h"
+#include "leaderboarddialog.h"
 
 // -----------------------------------------------------------------------
 // Constructor
@@ -27,6 +31,12 @@ MainWindow::MainWindow(QWidget *parent)
 
     // CompilerEngine for real compilation (teammate module).
     m_compilerEngine = new CompilerEngine();
+
+    // Leaderboard persists scores to JSON in the user's AppData folder.
+    m_leaderboard = new Leaderboard(this);
+    m_playerName = qEnvironmentVariable("USERNAME");
+    if (m_playerName.trimmed().isEmpty())
+        m_playerName = QStringLiteral("Player");
 
     setupScreens();
 
@@ -76,6 +86,12 @@ void MainWindow::setupScreens()
     // Result → Play again (same difficulty)
     connect(m_result, &ResultScreen::playAgainRequested,
             this,     &MainWindow::onPlayAgain);
+
+    // Home / Result → Leaderboard dialog
+    connect(m_home, &HomeScreen::leaderboardRequested,
+            this,   &MainWindow::onLeaderboardRequested);
+    connect(m_result, &ResultScreen::leaderboardRequested,
+            this,     &MainWindow::onLeaderboardRequested);
 }
 
 // -----------------------------------------------------------------------
@@ -115,7 +131,37 @@ void MainWindow::onSessionFinished(int score, int timeSecs, int hints, int wrong
                                    int solved, int totalChallenges)
 {
     m_result->setResults(score, timeSecs, hints, wrongs, solved, totalChallenges);
+
+    // Persist the score if the player solved at least one challenge.
+    // The name is remembered for the rest of the application session.
+    if (solved > 0) {
+        bool ok = false;
+        const QString name = QInputDialog::getText(
+            this,
+            tr("Save Score"),
+            tr("Name for the leaderboard:"),
+            QLineEdit::Normal,
+            m_playerName,
+            &ok);
+
+        if (ok && !name.trimmed().isEmpty()) {
+            m_playerName = name.trimmed();
+            m_leaderboard->submitScore(m_playerName, score,
+                                       static_cast<qint64>(timeSecs) * 1000);
+        }
+    }
+
     showScreen(kResultIndex);
+}
+
+// -----------------------------------------------------------------------
+// onLeaderboardRequested  (slot)
+// Shows the teammate's JSON-backed top-10 leaderboard.
+// -----------------------------------------------------------------------
+void MainWindow::onLeaderboardRequested()
+{
+    LeaderboardDialog dialog(m_leaderboard, this);
+    dialog.exec();
 }
 
 // -----------------------------------------------------------------------

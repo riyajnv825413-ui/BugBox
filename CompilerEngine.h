@@ -38,7 +38,16 @@ public:
 
     static QString statusName(Status status);
 
+    // True when a usable g++ executable was found.  The GUI uses this
+    // to fall back to text comparison instead of blocking the game.
+    bool isAvailable() const;
+
+    // The resolved full path (useful for diagnostics / About text).
+    QString resolvedCompilerPath() const { return compilerPath; }
+
 private:
+    static QString resolveCompilerPath(const QString &requested);
+
     QString compilerPath;
 };
 

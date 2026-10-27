@@ -40,8 +40,12 @@ signals:
     // Emitted when the user clicks "Start Debugging".
     void startRequested(Difficulty difficulty, GameMode mode);
 
+    // Emitted when the user wants to view the top-10 leaderboard.
+    void leaderboardRequested();
+
 private slots:
     void onStartClicked();
+    void onLeaderboardClicked();
 
 private:
     // --- Helpers --------------------------------------------------------
@@ -55,6 +59,7 @@ private:
     QComboBox   *m_difficultyCombo { nullptr };
     QComboBox   *m_gameModeCombo   { nullptr };
     QPushButton *m_startButton     { nullptr };
+    QPushButton *m_leaderboardButton { nullptr };
 };
 
 #endif // HOMESCREEN_H

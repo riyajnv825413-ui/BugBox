@@ -1,18 +1,13 @@
 /**
  * bugchallengeadapter.h
  * -----------------------------------------------------------
- * BugChallengeAdapter — MOCK Adapter  (OOP: adapter pattern)
+ * BugChallengeAdapter — curated + generated challenges
+ * (OOP: adapter / composition pattern)
  *
- * *** THIS IS A MOCK MODULE ***
- * Your teammate is responsible for the real bug-generation
- * module.  Until that module is available, this adapter
- * supplies hard-coded sample challenges so the GUI can be
- * demonstrated end-to-end.
- *
- * HOW TO REPLACE WITH THE REAL MODULE:
- *   1. Ask your teammate for their header / class interface.
- *   2. Replace the body of loadChallenges() to call their API.
- *   3. Map their data fields to BugChallenge setters.
+ * The curated challenges below are hand-written demo content.
+ * They are combined with randomised challenges produced by the
+ * teammate's BugGenerator engine (bugengineadapter.h), so the
+ * GUI plays both reliable, hand-tested bugs and fresh ones.
  *
  * BugChallengeAdapter uses a QVector container (OOP: composition)
  * to store all loaded challenges and hands them out one by one.
@@ -24,6 +19,7 @@
 
 #include <QVector>
 #include "bugchallenge.h"
+#include "bugengineadapter.h"
 
 // -----------------------------------------------------------------------
 // BugChallengeAdapter
@@ -47,6 +43,9 @@ private:
 
     // Container holding all challenges.
     QVector<BugChallenge> m_challenges;
+
+    // Bridges teammate-generated bugs into the GUI model.
+    BugEngineAdapter m_bugEngine;
 };
 
 #endif // BUGCHALLENGEADAPTER_H

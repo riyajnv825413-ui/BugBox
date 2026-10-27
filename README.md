@@ -2,13 +2,27 @@
 
 > **Find the bug. Fix the code. Beat the clock.**
 
-A college project GUI application built with **C++**, **Qt 6 Widgets**, and **CMake**.
+A college project desktop game built with **C++**, **Qt 6 Widgets**, and **CMake**.
+BUGBOX shows buggy C++ programs; the player fixes the bug, and the app compiles
+and runs the code to check the real output.
 
 ---
 
 ## 📋 Project Overview
 
-BUGBOX is an interactive debugging game where players are shown snippets of buggy C++ code and must find and fix the bug before the timer runs out. The game tracks score, time, hints used, and wrong submissions.
+BUGBOX combines four team contributions into one application:
+
+| Module | Owner | What it does |
+|---|---|---|
+| GUI, scoring, timer | **Rishika** | Home / Debug / Result screens, score rules, countdown |
+| Bug generator engine | **Riya** | Random bug templates (`BugGenerator`, `LoopBug`, `ArrayBug`, …) |
+| Compiler evaluation engine | **Teammate compiler module** | Compiles submissions with MinGW g++ and compares real stdout |
+| Leaderboard | **Teammate leaderboard module** | Top-10 scores stored in a local JSON file |
+
+The GUI's `BugChallengeAdapter` now combines the hand-written curated
+challenges with two randomised challenges from the bug engine for each
+difficulty. A small bridge (`bugenginebridge.*`) converts the engine's
+`std::string`/global `Difficulty` API into the Qt model without a name clash.
 
 ---
 
@@ -16,20 +30,29 @@ BUGBOX is an interactive debugging game where players are shown snippets of bugg
 
 ```
 bugboxwidget/
-├── main.cpp                     # Entry point
-├── CMakeLists.txt               # Build configuration
+├── main.cpp                       # Entry point (sets app/org name)
+├── CMakeLists.txt                 # Build configuration
 │
-├── mainwindow.h / .cpp          # Navigation controller (QStackedWidget)
+├── mainwindow.h / .cpp            # Navigation + leaderboard + score saving
+├── homescreen.h / .cpp            # Home screen (Start, Leaderboard)
+├── debugscreen.h / .cpp           # Game screen (Run, Hint, Submit, Next)
+├── resultscreen.h / .cpp          # Result screen (score, rank, leaderboard)
 │
-├── homescreen.h / .cpp          # Phase 2: Home / Welcome screen
-├── debugscreen.h / .cpp         # Phase 3: Debug / Game screen
-├── resultscreen.h / .cpp        # Phase 4: Result screen
+├── bugchallenge.h / .cpp          # Challenge data model
+├── bugchallengeadapter.h / .cpp   # Curated + generated challenge adapter
+├── bugengineadapter.h / .cpp      # BugData -> BugChallenge adapter
+├── bugenginebridge.h / .cpp       # Qt <-> standalone bug engine bridge
+├── scoremanager.h / .cpp          # Score logic (100 start, -10 wrong, -5 hint)
 │
-├── bugchallenge.h / .cpp        # Data class: one bug challenge (OOP)
-├── bugchallengeadapter.h / .cpp # *** MOCK *** adapter with sample data
-├── scoremanager.h / .cpp        # Score logic class (OOP, QObject)
+├── CompilerEngine.h / .cpp        # Real g++ compilation + execution
+├── leaderboard.h / .cpp           # JSON top-10 storage
+├── leaderboarddialog.h / .cpp     # Leaderboard table dialog
 │
-└── mainwindow.ui                # Kept for Qt Creator compatibility (unused)
+├── include/bug_engine/            # Teammate bug engine headers
+├── src/bug_engine/                # Teammate bug engine implementations
+├── Tests/                         # Teammate engine tests
+├── docs/                          # Teammate engine documentation
+└── data/Templates/                # Placeholder template folders
 ```
 
 ---
@@ -37,67 +60,81 @@ bugboxwidget/
 ## 🏗️ How to Build
 
 ### Prerequisites
-- Qt 6.5 or later (with MinGW 64-bit kit)
+- Qt 6.5 or later with the **MinGW 64-bit** kit
 - CMake 3.19 or later
-- Qt Creator (recommended) **or** command-line build
+- MinGW g++ 13.x (installed with the Qt kit under `C:\Qt\Tools\mingw...`)
 
-### Build in Qt Creator (Easiest)
-1. Open Qt Creator
-2. **File → Open File or Project** → select `CMakeLists.txt`
-3. Choose the **Desktop Qt 6.x MinGW 64-bit Debug** kit
-4. Click **Build** (hammer icon) or press **Ctrl+B**
-5. Click **Run** (green play button) or press **Ctrl+R**
+### Build in Qt Creator (easiest)
+1. Open Qt Creator.
+2. **File → Open File or Project** → select `CMakeLists.txt`.
+3. Choose the **Desktop Qt 6.x MinGW 64-bit** kit.
+4. Click **Build** (or `Ctrl+B`), then **Run** (`Ctrl+R`).
 
-### Build from Command Line (PowerShell)
+If Qt Creator asks to configure the project, accept — the old
+`build/Desktop_Qt_...` folder was removed during earlier troubleshooting.
+A working command-line build already exists in `build/`.
+
+### Build from the command line (PowerShell)
 ```powershell
-# Navigate to the existing build directory
-cd "C:\Users\Welcome\Documents\bugboxwidget\build\Desktop_Qt_6_12_0_MinGW_64_bit_Debug"
+$env:PATH = "C:\Qt\Tools\CMake_64\bin;C:\Qt\Tools\mingw1310_64\bin;C:\Qt\6.12.0\mingw_64\bin;$env:PATH"
 
-# Re-run CMake to pick up new source files
-C:\Qt\Tools\CMake_64\bin\cmake.exe ..\..\
+cd "C:\Users\Welcome\Documents\bugboxwidget"
+cmake -G "MinGW Makefiles" -S . -B build `
+      -DCMAKE_PREFIX_PATH="C:/Qt/6.12.0/mingw_64" `
+      -DCMAKE_MAKE_PROGRAM="C:/Qt/Tools/mingw1310_64/bin/mingw32-make.exe" `
+      -DCMAKE_BUILD_TYPE=Release
 
-# Build
-C:\Qt\Tools\mingw1310_64\bin\mingw32-make.exe -j4
-
-# Run
-.\bugboxwidget.exe
+cmake --build build -j4
+.\build\bugboxwidget.exe
 ```
 
 ---
 
 ## 🎮 How to Play
 
-1. Launch the app → **Home Screen** appears
-2. Read the instructions
-3. Select a difficulty: **Easy**, **Medium**, or **Hard**
-4. Select a game mode: **Full Run** (all challenges) or **Quick Round** (one challenge)
-5. Click **▶ Start Debugging**
-6. On the **Debug Screen**:
-   - Read the challenge description
-   - Find the bug in the C++ code editor
-   - Fix the code directly in the editor
-   - Click **▶ Run** for a dry-run check (no compilation for security)
-   - Click **✔ Submit** to submit your answer
-   - Click **💡 Hint** if stuck (costs 5 points, one-time per challenge)
-   - Each wrong submission costs 10 points
-7. When done → **Result Screen** shows your score, time, rank, and stats
-8. Click **▶ Play Again** or **🏠 Home**
+1. Launch the app → **Home** screen.
+2. Choose **Easy / Medium / Hard** and **Full Run / Quick Round**.
+3. Click **▶ Start Debugging**.
+4. Read the buggy code, fix it in the editor, then:
+   - **▶ Run** — compiles and runs the code, shows the real output.
+   - **💡 Hint** — reveals the hint (−5 points, once per challenge).
+   - **✔ Submit** — validates the answer and records the score.
+   - **Next Bug →** — advances after a correct answer.
+5. At the end, the **Result** screen shows score, time, rank, and stats.
+6. **🏆 Leaderboard** on Home/Result shows the top 10 saved scores.
+
+### Validation rules
+- The submitted code is written to a temporary folder and compiled with
+  `g++ -std=c++17`.
+- The compiled program runs with a **2-second time limit** and a
+  **10-second compile limit**.
+- Its stdout is compared with the challenge's expected output.
+- Line endings, leading/trailing blank lines, and trailing spaces are ignored;
+  comments do **not** affect compilation, so harmless comments are accepted.
+- Compilation errors, crashes, timeouts, and wrong output are rejected.
+- If g++ cannot be found, the game falls back to the old normalised-text
+  comparison and clearly says so in the output panel.
+
+> **Security note:** user code is executed as a normal desktop process with a
+> time limit only. This is suitable for a college demo, not a public judge.
 
 ---
 
-## 📐 OOP Design
+## 🔤 Compiler Discovery
 
-| Class | OOP Concept | Purpose |
-|---|---|---|
-| `BugChallenge` | Encapsulation, Constructors | Data model for one challenge |
-| `BugChallengeAdapter` | Adapter pattern, Composition | Loads challenges (MOCK) |
-| `ScoreManager` | Single Responsibility, Inheritance (QObject) | Score tracking with guards |
-| `HomeScreen` | Inheritance (QWidget) | Welcome / difficulty screen |
-| `DebugScreen` | Inheritance (QWidget), Composition | Main game screen |
-| `ResultScreen` | Inheritance (QWidget) | Results display |
-| `MainWindow` | Inheritance (QMainWindow), Composition | Navigation controller |
+`CompilerEngine` looks for g++ in this order:
 
-**Containers used:** `QVector<BugChallenge>` in `BugChallengeAdapter` and `DebugScreen`.
+1. `BUGBOX_COMPILER` environment variable
+2. A path passed to the constructor
+3. `PATH`
+4. `BUGBOX.exe` folder / `compiler\g++.exe` / `mingw\bin\g++.exe`
+5. `C:\Qt\Tools\mingw*\bin\g++.exe`
+6. `C:\msys64\ucrt64\bin\g++.exe`, `C:\MinGW\bin\g++.exe`, and common Code::Blocks paths
+
+Example override:
+```powershell
+$env:BUGBOX_COMPILER = "C:\Qt\Tools\mingw1310_64\bin\g++.exe"
+```
 
 ---
 
@@ -121,47 +158,58 @@ C:\Qt\Tools\mingw1310_64\bin\mingw32-make.exe -j4
 
 ---
 
-## ⏱️ Timer
+## 🏆 Leaderboard
 
-- Starts when a challenge loads
-- Updates every second via `QTimer`
-- Stops when round ends (correct submit or session end)
-- Multiple timer starts are prevented (`m_timer->stop()` before `start()`)
-
----
-
-## 🔒 Security Notice
-
-> **The Run button does NOT compile or execute user-provided C++ code.**
-
-Running arbitrary C++ code inside the GUI process would be a critical security and stability risk. The Run button performs a whitespace-normalised text comparison between the user's code and the stored solution.
-
-**Future enhancement:** Use `QProcess` to pipe code to an external sandboxed `g++` process with resource limits (CPU time, memory), capture stdout, and display real compiler output. This is left as a clearly-labelled future task.
+- Implemented by the teammate leaderboard module.
+- Scores are saved to:
+  `%APPDATA%\BUGBOX\BUGBOX\leaderboard.json`
+- Sorted by highest score, then fastest time.
+- The name prompt appears after a finished round in which at least one
+  challenge was solved.
 
 ---
 
-## 🔌 Module Integration
+## ✅ Verification Performed
 
-Your teammates' modules are not yet available. The file `bugchallengeadapter.cpp` contains **clearly labelled MOCK data** with 9 sample challenges (3 per difficulty).
+A headless integration test compiled **every challenge solution** (curated and
+generated across Easy/Medium/Hard) and confirmed:
 
-**To integrate the real bug-generation module:**
-1. Ask your teammate for their class/function interface
-2. In `bugchallengeadapter.cpp`, replace `loadMockChallenges()` with calls to their API
-3. Map their data fields to `BugChallenge` setters
+- every fixed solution → `Accepted`;
+- every original buggy version → rejected
+  (`Wrong Answer`, `Compilation Error`, `Runtime Error`, or `Time Limit Exceeded`);
+- leaderboard sorting and JSON persistence work.
+
+A Qt GUI test simulated the original complaint:
+keeping the buggy `// bug: stops at 4` comment and changing only `< 5` to
+`<= 5`. The built app compiled it, printed `1 2 3 4 5`, accepted it, and kept
+the score at **100**.
 
 ---
 
-## ✅ Implemented Features
+## 📦 Portable Windows Build
 
-- [x] Home screen with title, subtitle, instructions, difficulty selector, Start button
-- [x] Debug screen with code editor, description, expected output, output panel
-- [x] Run, Hint, Submit, Next Bug, Home buttons
-- [x] QStackedWidget navigation (Home ↔ Debug ↔ Result)
-- [x] ScoreManager class with guarded deductions
-- [x] Countdown timer with QTimer (single-timer guarantee)
-- [x] Result screen with score, time, hints, wrongs, rank badge
-- [x] Mock challenge adapter with 9 sample challenges (3 per difficulty)
-- [x] OOP design: encapsulation, inheritance, composition, constructors, containers
+A deployed portable folder and ZIP are available at:
+
+- Folder: `C:\Users\Welcome\Documents\BUGBOX-Windows-x64`
+- ZIP: `C:\Users\Welcome\Documents\BUGBOX-Windows-x64.zip` (~18 MB)
+
+The folder contains `BUGBOX.exe`, all required Qt DLLs/plugins, and a
+`README.txt`. It runs without Qt installed. **Real compilation still needs
+MinGW g++** on the machine (see above).
+
+> A Qt Widgets app is a desktop program, so it cannot be hosted at a website
+> URL. The GitHub repository is the source URL; the ZIP/GitHub Release is the
+> distributable build.
+
+---
+
+## 🔗 Repository
+
+- Repo: <https://github.com/riyajnv825413-ui/BugBox>
+- Team branch: `rishika`
+- Integration branch: `integration` (merged into `rishika` after testing)
+
+`main` is the team's protected branch and was not modified.
 
 ---
 
@@ -169,9 +217,10 @@ Your teammates' modules are not yet available. The file `bugchallengeadapter.cpp
 
 | Module | Owner |
 |---|---|
-| GUI, Scoring, Timer | **You** |
-| Bug Generation | Teammate A |
-| Code Evaluation | Teammate B |
+| GUI, Scoring, Timer | Rishika |
+| Bug Generation | Riya |
+| Code Evaluation | Compiler teammate |
+| Leaderboard | Leaderboard teammate |
 
 ---
 

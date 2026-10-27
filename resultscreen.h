@@ -41,10 +41,12 @@ public:
 signals:
     void playAgainRequested();
     void homeRequested();
+    void leaderboardRequested();
 
 private slots:
     void onPlayAgainClicked();
     void onHomeClicked();
+    void onLeaderboardClicked();
 
 private:
     void buildLayout();
@@ -60,6 +62,7 @@ private:
     QLabel      *m_rankLabel    { nullptr };
     QPushButton *m_playAgainBtn { nullptr };
     QPushButton *m_homeBtn      { nullptr };
+    QPushButton *m_leaderboardBtn { nullptr };
 };
 
 #endif // RESULTSCREEN_H

@@ -83,6 +83,7 @@ void ResultScreen::setResults(int score, int timeTakenSeconds,
 // -----------------------------------------------------------------------
 void ResultScreen::onPlayAgainClicked() { emit playAgainRequested(); }
 void ResultScreen::onHomeClicked()      { emit homeRequested(); }
+void ResultScreen::onLeaderboardClicked() { emit leaderboardRequested(); }
 
 // -----------------------------------------------------------------------
 // buildLayout  (private)
@@ -161,6 +162,15 @@ void ResultScreen::buildLayout()
     connect(m_homeBtn, &QPushButton::clicked, this, &ResultScreen::onHomeClicked);
     btnRow->addWidget(m_homeBtn);
 
+    m_leaderboardBtn = new QPushButton("🏆  Leaderboard", this);
+    m_leaderboardBtn->setObjectName("leaderboardBtn");
+    m_leaderboardBtn->setMinimumHeight(46);
+    m_leaderboardBtn->setMinimumWidth(150);
+    m_leaderboardBtn->setCursor(Qt::PointingHandCursor);
+    connect(m_leaderboardBtn, &QPushButton::clicked,
+            this, &ResultScreen::onLeaderboardClicked);
+    btnRow->addWidget(m_leaderboardBtn);
+
     m_playAgainBtn = new QPushButton("▶  Play Again", this);
     m_playAgainBtn->setObjectName("playAgainBtn");
     m_playAgainBtn->setMinimumHeight(46);
@@ -238,6 +248,20 @@ void ResultScreen::applyStyles()
             padding: 10px 24px;
         }
         QPushButton#homeBtn:hover { background: rgba(255,255,255,0.15); }
+
+        QPushButton#leaderboardBtn {
+            background: rgba(255,255,255,0.08);
+            color: #a0c4ff;
+            border: 1px solid #3a3a8a;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: bold;
+            padding: 10px 24px;
+        }
+        QPushButton#leaderboardBtn:hover {
+            background: rgba(255,255,255,0.16);
+            color: #ffffff;
+        }
 
         QPushButton#playAgainBtn {
             background: qlineargradient(x1:0,y1:0,x2:1,y2:0,

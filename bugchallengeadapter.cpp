@@ -20,7 +20,8 @@ BugChallengeAdapter::BugChallengeAdapter()
 
 // -----------------------------------------------------------------------
 // challengesForDifficulty
-// Filters the internal vector by difficulty and returns a copy.
+// Returns curated challenges for the difficulty, followed by up to
+// two distinct randomised challenges from the Bug Engine.
 // -----------------------------------------------------------------------
 QVector<BugChallenge> BugChallengeAdapter::challengesForDifficulty(Difficulty d) const
 {
@@ -30,6 +31,22 @@ QVector<BugChallenge> BugChallengeAdapter::challengesForDifficulty(Difficulty d)
             result.append(ch);
         }
     }
+
+    // Append generated challenges, skipping any code template that is
+    // already present in the curated list.
+    const QVector<BugChallenge> generated = m_bugEngine.generateChallenges(d, 2);
+    for (const BugChallenge &ch : generated) {
+        bool duplicate = false;
+        for (const BugChallenge &existing : result) {
+            if (existing.buggyCode() == ch.buggyCode()) {
+                duplicate = true;
+                break;
+            }
+        }
+        if (!duplicate)
+            result.append(ch);
+    }
+
     return result;
 }
 
@@ -95,17 +112,30 @@ void BugChallengeAdapter::loadMockChallenges()
     m_challenges.append(BugChallenge(
         "Wrong comparison operator",
         "The function should return true when a equals b.\n"
-        "But there is a classic assignment-vs-comparison bug.",
+        "But there is a classic assignment-vs-comparison bug.\n"
+        "This program tests areEqual(5, 7), so it should print 0.",
+        "#include <iostream>\n"
+        "using namespace std;\n\n"
         "bool areEqual(int a, int b) {\n"
         "    if (a = b)   // bug here\n"
         "        return true;\n"
         "    return false;\n"
+        "}\n\n"
+        "int main() {\n"
+        "    cout << areEqual(5, 7) << endl;\n"
+        "    return 0;\n"
         "}",
-        "(no output — logic error)",
+        "0",
+        "#include <iostream>\n"
+        "using namespace std;\n\n"
         "bool areEqual(int a, int b) {\n"
         "    if (a == b)\n"
         "        return true;\n"
         "    return false;\n"
+        "}\n\n"
+        "int main() {\n"
+        "    cout << areEqual(5, 7) << endl;\n"
+        "    return 0;\n"
         "}",
         "In C++, a single = assigns a value. To compare, you need ==.",
         Difficulty::Easy

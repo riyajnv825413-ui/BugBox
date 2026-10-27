@@ -19,12 +19,15 @@
 
 #include <QMainWindow>
 #include <QStackedWidget>
+#include <QString>
 
 #include "homescreen.h"
 #include "debugscreen.h"
 #include "resultscreen.h"
 #include "bugchallengeadapter.h"
 #include "CompilerEngine.h"
+
+class Leaderboard;
 
 // -----------------------------------------------------------------------
 // MainWindow
@@ -49,6 +52,7 @@ private slots:
     void onHomeFromDebug();
     void onHomeFromResult();
     void onPlayAgain();
+    void onLeaderboardRequested();
 
 private:
     void setupScreens();
@@ -66,6 +70,10 @@ private:
 
     // --- Compilation engine (teammate module) ---------------------------
     CompilerEngine       *m_compilerEngine { nullptr };
+
+    // --- Persisted leaderboard (teammate module) ------------------------
+    Leaderboard          *m_leaderboard { nullptr };
+    QString               m_playerName;
 
     // Remember the last selected difficulty for "Play Again".
     Difficulty            m_lastDifficulty { Difficulty::Easy };

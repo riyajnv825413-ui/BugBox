@@ -140,7 +140,16 @@ void DebugScreen::loadChallenge(int index)
 
     // Clear output area
     m_outputArea->clear();
-    m_outputArea->setPlainText("Output will appear here after you click Run or Submit.");
+    if (m_compilerEngine && m_compilerEngine->isAvailable()) {
+        m_outputArea->setPlainText(
+            "Output will appear here after you click Run or Submit.\n"
+            "Submissions are compiled with g++ and checked against the expected output.");
+    } else {
+        m_outputArea->setPlainText(
+            "⚠ Real C++ compilation is unavailable (g++ not found).\n"
+            "BUGBOX will use text comparison instead.\n"
+            "To enable compilation, install MinGW g++ or set BUGBOX_COMPILER to g++.exe.");
+    }
 
     // New challenge in same session — score continues; hint resets.
     m_scoreManager->resetHintForNewChallenge();
@@ -186,8 +195,10 @@ void DebugScreen::onRunClicked()
         return;
     }
 
-    // If compiler engine is available, use it for real compilation and execution.
-    if (m_compilerEngine) {
+    // If the compiler engine is available, use it for real compilation
+    // and execution.  Otherwise fall back to text comparison.
+    const bool compilerReady = m_compilerEngine && m_compilerEngine->isAvailable();
+    if (compilerReady) {
         m_outputArea->setPlainText("⏳ Compiling and running...\n");
         QApplication::processEvents();
 
@@ -206,6 +217,13 @@ void DebugScreen::onRunClicked()
             msg += "Expected output:\n" + ch.expectedOutput() + "\n\n";
             msg += "Time: " + QString::number(result.executionTimeMs) + " ms\n";
             msg += "Note: Click Submit to record your answer officially.";
+        } else if (result.status == CompilerEngine::WrongAnswer) {
+            msg = "❌ [Wrong Answer]\n\n";
+            msg += "Your program compiled and ran, but its output is not correct.\n\n";
+            msg += "Your output:\n" + (result.output.isEmpty() ? "(no output)" : result.output) + "\n\n";
+            msg += "Expected output:\n" + ch.expectedOutput() + "\n\n";
+            msg += "Time: " + QString::number(result.executionTimeMs) + " ms\n";
+            msg += "Fix the logic and try again.";
         } else if (result.status == CompilerEngine::CompilationError) {
             msg = "❌ [Compilation Error]\n\n";
             msg += result.errorOutput.isEmpty() ? result.message : result.errorOutput;
@@ -228,7 +246,7 @@ void DebugScreen::onRunClicked()
         return;
     }
 
-    // Fallback: textual dry-run comparison.
+    // Fallback: textual dry-run comparison (compiler unavailable).
     bool looksFixed = (normalise(userCode) == normalise(ch.solution()));
 
     if (looksFixed) {
@@ -287,8 +305,10 @@ void DebugScreen::onSubmitClicked()
 
     bool correct = false;
 
-    // If compiler engine is available, use it for real compilation and execution.
-    if (m_compilerEngine) {
+    // If the compiler engine is available, use it for real compilation
+    // and execution.  Otherwise fall back to text comparison.
+    const bool compilerReady = m_compilerEngine && m_compilerEngine->isAvailable();
+    if (compilerReady) {
         m_outputArea->setPlainText("⏳ Compiling and running...\n");
         QApplication::processEvents();
 
@@ -311,7 +331,12 @@ void DebugScreen::onSubmitClicked()
             );
         } else {
             QString msg;
-            if (result.status == CompilerEngine::CompilationError) {
+            if (result.status == CompilerEngine::WrongAnswer) {
+                msg = "❌ [Wrong Answer]\n\n";
+                msg += "Your program compiled and ran, but its output is not correct.\n\n";
+                msg += "Your output:\n" + (result.output.isEmpty() ? "(no output)" : result.output) + "\n\n";
+                msg += "Expected output:\n" + ch.expectedOutput() + "\n";
+            } else if (result.status == CompilerEngine::CompilationError) {
                 msg = "❌ [Compilation Error]\n\n";
                 msg += result.errorOutput.isEmpty() ? result.message : result.errorOutput;
             } else if (result.status == CompilerEngine::RuntimeError) {

@@ -49,6 +49,11 @@ void HomeScreen::onStartClicked()
     emit startRequested(selectedDifficulty(), selectedGameMode());
 }
 
+void HomeScreen::onLeaderboardClicked()
+{
+    emit leaderboardRequested();
+}
+
 // -----------------------------------------------------------------------
 // buildLayout  (private)
 // Creates all child widgets and arranges them with Qt layouts.
@@ -147,9 +152,19 @@ void HomeScreen::buildLayout()
     m_startButton->setCursor(Qt::PointingHandCursor);
     connect(m_startButton, &QPushButton::clicked, this, &HomeScreen::onStartClicked);
 
+    m_leaderboardButton = new QPushButton("🏆  Leaderboard", this);
+    m_leaderboardButton->setObjectName("leaderboardButton");
+    m_leaderboardButton->setMinimumHeight(50);
+    m_leaderboardButton->setMinimumWidth(180);
+    m_leaderboardButton->setCursor(Qt::PointingHandCursor);
+    connect(m_leaderboardButton, &QPushButton::clicked,
+            this, &HomeScreen::onLeaderboardClicked);
+
     auto *btnRow = new QHBoxLayout();
     btnRow->setAlignment(Qt::AlignCenter);
+    btnRow->setSpacing(12);
     btnRow->addWidget(m_startButton);
+    btnRow->addWidget(m_leaderboardButton);
     mainLayout->addLayout(btnRow);
 
     mainLayout->addStretch();
@@ -264,6 +279,22 @@ void HomeScreen::applyStyles()
                 x1:0, y1:0, x2:1, y2:0,
                 stop:0 #5b10d7, stop:1 #d00080
             );
+        }
+
+        /* ---- Leaderboard button ---- */
+        QPushButton#leaderboardButton {
+            background: rgba(255,255,255,0.08);
+            color: #a0c4ff;
+            border: 1px solid #3a3a8a;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: bold;
+            padding: 12px 24px;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        QPushButton#leaderboardButton:hover {
+            background: rgba(255,255,255,0.16);
+            color: #ffffff;
         }
 
         /* ---- Footer ---- */
